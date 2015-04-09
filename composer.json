@@ -1,0 +1,23 @@
+{
+    "name": "devmachine/form-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony form extensions.",
+    "keywords": [ "form" ],
+    "homepage": "https://github.com/dev-machine/DevmachineFormBundle",
+    "license": "MIT",
+    "authors": [
+        { "name": "Dmitri Lakachauskis", "email": "dmitri@devmachine.net" }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/framework-bundle": "~2.3"
+    },
+    "autoload": {
+        "psr-4": { "Devmachine\\FormBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
