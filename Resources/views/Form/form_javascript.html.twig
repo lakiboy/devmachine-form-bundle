@@ -1,0 +1,17 @@
+{% block devmachine_date_javascript %}
+    <script type="text/javascript">
+        $(function () {
+            var config = {{ config | json_encode | raw }};
+
+            {% if inline %}
+                $('#{{ id }}-calendar').datepicker(config).on('changeDate', function () {
+                    $('#{{ id }}').val($(this).datepicker('getFormattedDate'));
+                });
+            {% elseif input_addon %}
+                $('#{{ id }}-container').datepicker(config);
+            {% else %}
+                $('#{{ id }}').datepicker(config);
+            {% endif %}
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% block devmachine_date_widget %}
+    {% if inline %}
+        {{ block('devmachine_date_widget_inline') }}
+    {% elseif input_addon %}
+        {{ block('devmachine_date_widget_addon') }}
+    {% else %}
+        {{ block('form_widget') }}
+    {% endif %}
+{% endblock %}
+
+{% block devmachine_date_widget_addon %}
+{% spaceless %}
+    <div id="{{ id }}-container" class="input-group date">
+        {{ block('form_widget') }}
+        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    </div>
+{% endspaceless %}
+{% endblock %}
+
+{% block devmachine_date_widget_inline %}
+{% spaceless %}
+    {{ block('hidden_widget') }}
+    <div id="{{ id }}-calendar" data-date="{{ value }}"></div>
+{% endspaceless %}
+{% endblock %}

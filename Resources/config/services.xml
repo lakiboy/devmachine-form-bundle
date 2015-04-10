@@ -9,5 +9,9 @@
             <tag name="form.type" alias="devmachine_flat_choice" />
         </service>
 
+        <service id="devmachine.form.type.date" class="Devmachine\FormBundle\Form\Type\DateType">
+            <tag name="form.type" alias="devmachine_date" />
+        </service>
+
     </services>
 </container>
