@@ -28,12 +28,12 @@ class DateType extends AbstractType
 
             // Multi dates not supported yet.
             if (isset($config['multidate'])) {
-                throw new \RuntimeException(sprintf("Config option 'multiday' is not supported yet."));
+                throw new \RuntimeException("Config option 'multiday' is not supported yet.");
             }
 
             // Date range not supported yet.
             if (isset($config['inputs'])) {
-                throw new \RuntimeException(sprintf("Config option 'inputs' is not supported yet."));
+                throw new \RuntimeException("Config option 'inputs' is not supported yet.");
             }
 
             if (isset($config['datesDisabled'])) {
