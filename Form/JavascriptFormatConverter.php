@@ -57,7 +57,7 @@ class JavascriptFormatConverter
     {
         $formatter = new \IntlDateFormatter(
             $this->locale,
-            $dateFormat,
+            is_string($dateFormat) ? \IntlDateFormatter::MEDIUM : $dateFormat,
             $timeFormat,
             $this->timezone,
             $this->calendar,

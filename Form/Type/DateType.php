@@ -28,12 +28,16 @@ class DateType extends AbstractType
 
             // Multi dates not supported yet.
             if (isset($config['multidate'])) {
-                unset($config['multidate']);
+                throw new \RuntimeException(sprintf("Config option 'multiday' is not supported yet."));
             }
 
             // Date range not supported yet.
             if (isset($config['inputs'])) {
-                unset($config['inputs']);
+                throw new \RuntimeException(sprintf("Config option 'inputs' is not supported yet."));
+            }
+
+            if (isset($config['datesDisabled'])) {
+                $config['datesDisabled'] = (array) $config['datesDisabled'];
             }
 
             $config['format'] = call_user_func($options['formatter'], $options['format']);
@@ -63,6 +67,7 @@ class DateType extends AbstractType
             // Do not inherit certain rules.
             ->setAllowedValues('widget', ['single_text'])
             ->setAllowedValues('html5', [false])
+            ->setAllowedTypes('format', 'string')
             ->remove(['years', 'month', 'days'])
 
             ->setAllowedValues('input_addon', [true, false])
@@ -78,5 +83,39 @@ class DateType extends AbstractType
         $view->vars['input_addon'] = $options['input_addon'];
         $view->vars['inline'] = $options['inline'];
         $view->vars['config'] = $options['config'];
+
+        $config = & $view->vars['config'];
+
+        if (!empty($config['startDate'])) {
+            $config['startDate'] = $this->normalizeDate($config['startDate'], $form);
+        }
+        if (!empty($config['endDate'])) {
+            $config['endDate'] = $this->normalizeDate($config['endDate'], $form);
+        }
+        if (!empty($config['datesDisabled'])) {
+            foreach ($config['datesDisabled'] as $index => $date) {
+                $config['datesDisabled'][$index] = $this->normalizeDate($date, $form);
+            }
+        }
+    }
+
+    /**
+     * @param string|\DateTime $date
+     * @param FormInterface    $form
+     *
+     * @return \DateTime|string
+     */
+    private function normalizeDate($date, FormInterface $form)
+    {
+        if (!$date instanceof \DateTime) {
+            return $date;
+        }
+
+        $result = $date;
+        foreach ($form->getConfig()->getViewTransformers() as $transformer) {
+            $result = $transformer->transform($result);
+        }
+
+        return $result;
     }
 }
