@@ -3,6 +3,7 @@
 namespace Devmachine\FormBundle\Form\Type;
 
 use Devmachine\FormBundle\Form\JavascriptFormatConverter;
+use Devmachine\FormBundle\FormatConfiguration;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -11,6 +12,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DateType extends AbstractType
 {
+    private $configuration;
+
+    public function __construct(FormatConfiguration $configuration)
+    {
+        $this->configuration = $configuration;
+    }
+
     public function getName()
     {
         return 'devmachine_date';
@@ -53,6 +61,7 @@ class DateType extends AbstractType
         };
 
         $resolver->setDefaults([
+            'format'      => $this->configuration->getDateFormat(),
             'widget'      => 'single_text',
             'html5'       => false,
             'input_addon' => false,
