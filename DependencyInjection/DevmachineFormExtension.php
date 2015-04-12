@@ -17,5 +17,9 @@ class DevmachineFormExtension extends ConfigurableExtension
         $container->getDefinition('devmachine_form.format_configuration')
             ->addMethodCall('setDateFormat', [$config['formats']['date']])
         ;
+
+        if (!isset($container->getParameter('kernel.bundles')['GenemuFormBundle'])) {
+            $loader->load('genemu.xml');
+        }
     }
 }
