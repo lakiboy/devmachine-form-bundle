@@ -15,7 +15,24 @@
 
         <service id="devmachine.form.type.date" class="Devmachine\FormBundle\Form\Type\DateType">
             <argument type="service" id="devmachine_form.format_configuration" />
+            <argument type="service">
+                <service class="Devmachine\FormBundle\Form\DateNormalizer" />
+            </argument>
             <tag name="form.type" alias="devmachine_date" />
+        </service>
+
+        <service id="devmachine.form.type.datetime" class="Devmachine\FormBundle\Form\Type\DateTimeType">
+            <tag name="form.type" alias="devmachine_datetime" />
+        </service>
+
+        <!-- Search -->
+
+        <service id="devmachine.search.type.date_range" class="Devmachine\FormBundle\Form\Search\Type\DateRangeType">
+            <tag name="form.type" alias="devmachine_search_range_date" />
+        </service>
+
+        <service id="devmachine.search.type.datetime_range" class="Devmachine\FormBundle\Form\Search\Type\DateTimeRangeType">
+            <tag name="form.type" alias="devmachine_search_range_datetime" />
         </service>
 
     </services>

@@ -2,6 +2,7 @@
 
 namespace Devmachine\FormBundle\Form\Type;
 
+use Devmachine\FormBundle\Form\DateNormalizer;
 use Devmachine\FormBundle\Form\JavascriptFormatConverter;
 use Devmachine\FormBundle\FormatConfiguration;
 use Symfony\Component\Form\AbstractType;
@@ -13,10 +14,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class DateType extends AbstractType
 {
     private $configuration;
+    private $dateNormalizer;
 
-    public function __construct(FormatConfiguration $configuration)
+    public function __construct(FormatConfiguration $configuration, DateNormalizer $dateNormalizer)
     {
         $this->configuration = $configuration;
+        $this->dateNormalizer = $dateNormalizer;
     }
 
     public function getName()
@@ -96,35 +99,15 @@ class DateType extends AbstractType
         $config = & $view->vars['config'];
 
         if (!empty($config['startDate'])) {
-            $config['startDate'] = $this->normalizeDate($config['startDate'], $form);
+            $config['startDate'] = $this->dateNormalizer->normalizeDate($config['startDate'], $form);
         }
         if (!empty($config['endDate'])) {
-            $config['endDate'] = $this->normalizeDate($config['endDate'], $form);
+            $config['endDate'] = $this->dateNormalizer->normalizeDate($config['endDate'], $form);
         }
         if (!empty($config['datesDisabled'])) {
             foreach ($config['datesDisabled'] as $index => $date) {
-                $config['datesDisabled'][$index] = $this->normalizeDate($date, $form);
+                $config['datesDisabled'][$index] = $this->dateNormalizer->normalizeDate($date, $form);
             }
         }
-    }
-
-    /**
-     * @param string|\DateTime $date
-     * @param FormInterface    $form
-     *
-     * @return \DateTime|string
-     */
-    private function normalizeDate($date, FormInterface $form)
-    {
-        if (!$date instanceof \DateTime) {
-            return $date;
-        }
-
-        $result = $date;
-        foreach ($form->getConfig()->getViewTransformers() as $transformer) {
-            $result = $transformer->transform($result);
-        }
-
-        return $result;
     }
 }
