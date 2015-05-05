@@ -9,19 +9,21 @@
 
         <!-- Form types -->
 
+        <service id="devmachine.form.date_normalizer" class="Devmachine\FormBundle\Form\DateNormalizer" public="false" />
+
         <service id="devmachine.form.type.flat_choice" class="Devmachine\FormBundle\Form\Type\FlatChoiceType">
             <tag name="form.type" alias="devmachine_flat_choice" />
         </service>
 
         <service id="devmachine.form.type.date" class="Devmachine\FormBundle\Form\Type\DateType">
             <argument type="service" id="devmachine_form.format_configuration" />
-            <argument type="service">
-                <service class="Devmachine\FormBundle\Form\DateNormalizer" />
-            </argument>
+            <argument type="service" id="devmachine.form.date_normalizer" />
             <tag name="form.type" alias="devmachine_date" />
         </service>
 
         <service id="devmachine.form.type.datetime" class="Devmachine\FormBundle\Form\Type\DateTimeType">
+            <argument type="service" id="devmachine_form.format_configuration" />
+            <argument type="service" id="devmachine.form.date_normalizer" />
             <tag name="form.type" alias="devmachine_datetime" />
         </service>
 

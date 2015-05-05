@@ -15,3 +15,29 @@
         });
     </script>
 {% endblock %}
+
+{% block devmachine_datetime_javascript %}
+    <script type="text/javascript">
+        $(function () {
+            var config = {{ config | json_encode | raw }};
+
+            {% if inline %}
+                $('#{{ id }}-calendar').datetimepicker(config).on('dp.change', function () {
+                    var dp = $(this).data('DateTimePicker');
+
+                    // Get formatted date.
+                    $('#{{ id }}').val(dp.date().format(dp.format()));
+                });
+
+                // Init current date time picker.
+                if ($('#{{ id }}').val()) {
+                    $('#{{ id }}-calendar').data('DateTimePicker').date($('#{{ id }}').val());
+                }
+            {% elseif input_addon %}
+                $('#{{ id }}-container').datetimepicker(config);
+            {% else %}
+                $('#{{ id }}').datetimepicker(config);
+            {% endif %}
+        });
+    </script>
+{% endblock %}

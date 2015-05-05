@@ -2,8 +2,8 @@
 
 namespace Devmachine\FormBundle\Form\Type;
 
+use Devmachine\FormBundle\Converter\BootstrapFormatConverter;
 use Devmachine\FormBundle\Form\DateNormalizer;
-use Devmachine\FormBundle\Form\JavascriptFormatConverter;
 use Devmachine\FormBundle\FormatConfiguration;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
@@ -60,7 +60,7 @@ class DateType extends AbstractType
             return \Locale::getPrimaryLanguage($options['locale']);
         };
         $formatter = function (Options $options) {
-            return new JavascriptFormatConverter($options['locale']);
+            return new BootstrapFormatConverter($options['locale']);
         };
 
         $resolver->setDefaults([

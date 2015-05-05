@@ -1,4 +1,5 @@
 {% block devmachine_date_widget %}
+{% spaceless %}
     {% if inline %}
         {{ block('devmachine_date_widget_inline') }}
     {% elseif input_addon %}
@@ -6,6 +7,7 @@
     {% else %}
         {{ block('form_widget') }}
     {% endif %}
+{% endspaceless %}
 {% endblock %}
 
 {% block devmachine_date_widget_addon %}
@@ -21,5 +23,11 @@
 {% spaceless %}
     {{ block('hidden_widget') }}
     <div id="{{ id }}-calendar" data-date="{{ value }}"></div>
+{% endspaceless %}
+{% endblock %}
+
+{% block devmachine_datetime_widget %}
+{% spaceless %}
+    {{ block('devmachine_date_widget') }}
 {% endspaceless %}
 {% endblock %}
