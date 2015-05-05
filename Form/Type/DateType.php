@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class DateType extends AbstractType
 {
@@ -109,5 +110,14 @@ class DateType extends AbstractType
                 $config['datesDisabled'][$index] = $this->dateNormalizer->normalizeDate($date, $form);
             }
         }
+    }
+
+    /**
+     * BC.
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        /** @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
+        $this->configureOptions($resolver);
     }
 }

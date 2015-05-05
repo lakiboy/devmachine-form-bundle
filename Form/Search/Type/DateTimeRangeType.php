@@ -4,6 +4,7 @@ namespace Devmachine\FormBundle\Form\Search\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class DateTimeRangeType extends AbstractType
 {
@@ -22,5 +23,14 @@ class DateTimeRangeType extends AbstractType
         $resolver->setDefaults([
             'value_type' => 'devmachine_datetime',
         ]);
+    }
+
+    /**
+     * BC.
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        /** @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
+        $this->configureOptions($resolver);
     }
 }

@@ -6,23 +6,16 @@ use Devmachine\FormBundle\Converter\JavascriptFormatConverter;
 
 class JavascriptFormatConverterTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var JavascriptFormatConverter */
-    private $converter;
-
-    public function setUp()
-    {
-        $this->converter = new JavascriptFormatConverter('en_GB', 'Europe/London');
-    }
-
     /**
-     * @dataProvider getConversions
+     * @dataProvider getPatterns
      *
      * @param string $format
      * @param string $converted
      */
     public function testConvert($format, $converted)
     {
-        $this->converter->setSymbolsMap([
+        $converter = new JavascriptFormatConverter('en_GB', 'Europe/London');
+        $converter->setSymbolsMap([
             'yyyy' => '1111',
             'yyy'  => '222',
             'yy'   => '33',
@@ -37,13 +30,13 @@ class JavascriptFormatConverterTest extends \PHPUnit_Framework_TestCase
             'd'    => '0',
         ]);
 
-        $this->assertEquals($converted, $this->converter->convert($format));
+        $this->assertEquals($converted, $converter->convert($format));
     }
 
     /**
      * @return array
      */
-    public function getConversions()
+    public function getPatterns()
     {
         return [
             ['yy-mm-dd', '33-77-99'],
