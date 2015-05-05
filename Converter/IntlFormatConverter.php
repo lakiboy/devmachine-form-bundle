@@ -37,7 +37,7 @@ abstract class IntlFormatConverter
      *
      * @return string
      */
-    public function convert($dateFormat, $timeFormat)
+    public function convert($dateFormat, $timeFormat = \IntlDateFormatter::NONE)
     {
         $formatter = new \IntlDateFormatter(
             $this->locale,
