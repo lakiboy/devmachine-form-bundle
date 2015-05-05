@@ -3,7 +3,6 @@
 namespace Devmachine\FormBundle\Form\Type;
 
 use Devmachine\FormBundle\Converter\MomentJsFormatConverter;
-use Devmachine\FormBundle\Form\DateNormalizer;
 use Devmachine\FormBundle\FormatConfiguration;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
@@ -15,12 +14,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class DateTimeType extends AbstractType
 {
     private $configuration;
-    private $dateNormalizer;
 
-    public function __construct(FormatConfiguration $configuration, DateNormalizer $dateNormalizer)
+    public function __construct(FormatConfiguration $configuration)
     {
         $this->configuration = $configuration;
-        $this->dateNormalizer = $dateNormalizer;
     }
 
     public function getName()
@@ -63,6 +60,20 @@ class DateTimeType extends AbstractType
                 $config['sideBySide'] = true;
             }
 
+            // Normalize dates.
+            if (!empty($config['minDate'])) {
+                $config['minDate'] = $this->normalizeDate($config['minDate']);
+            }
+            if (!empty($config['maxDate'])) {
+                $config['maxDate'] = $this->normalizeDate($config['maxDate']);
+            }
+            if (!empty($config['enabledDates'])) {
+                $config['enabledDates'] = $this->normalizeDates($config['enabledDates']);
+            }
+            if (!empty($config['disabledDates'])) {
+                $config['disabledDates'] = $this->normalizeDates($config['disabledDates']);
+            }
+
             return $config;
         };
 
@@ -101,15 +112,6 @@ class DateTimeType extends AbstractType
         $view->vars['input_addon'] = $options['input_addon'];
         $view->vars['inline'] = $options['inline'];
         $view->vars['config'] = $options['config'];
-
-        $config = & $view->vars['config'];
-
-        if (!empty($config['minDate'])) {
-            $config['minDate'] = $this->dateNormalizer->normalizeDate($config['minDate'], $form);
-        }
-        if (!empty($config['maxDate'])) {
-            $config['maxDate'] = $this->dateNormalizer->normalizeDate($config['maxDate'], $form);
-        }
     }
 
     /**
@@ -119,5 +121,15 @@ class DateTimeType extends AbstractType
     {
         /** @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
         $this->configureOptions($resolver);
+    }
+
+    private function normalizeDate($date)
+    {
+        return $date instanceof \DateTime ? $date->format('Y-m-d') : $date;
+    }
+
+    private function normalizeDates($dates)
+    {
+        return array_map([$this, 'normalizeDate'], (array) $dates);
     }
 }

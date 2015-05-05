@@ -23,7 +23,6 @@
 
         <service id="devmachine.form.type.datetime" class="Devmachine\FormBundle\Form\Type\DateTimeType">
             <argument type="service" id="devmachine_form.format_configuration" />
-            <argument type="service" id="devmachine.form.date_normalizer" />
             <tag name="form.type" alias="devmachine_datetime" />
         </service>
 
