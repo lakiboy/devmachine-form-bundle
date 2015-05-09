@@ -41,3 +41,28 @@
         });
     </script>
 {% endblock %}
+
+{% block devmachine_child_choice_javascript %}
+    <script type="text/javascript">
+        $(function () {
+            var $options = $('#{{ id }} optgroup').clone(),
+                $parent  = $('#{{ form.parent.children[parent].vars.id }}'),
+                $select  = $('#{{ id }}')
+            ;
+
+            $select.children('optgroup').remove();
+
+            $parent.change(function () {
+                {% if required %}
+                    $select.children().remove();
+                {% else %}
+                    $select.children().slice(1).remove();
+                {% endif %}
+
+                var $filtered = $options.filter('[label="' + $(this).val() + '"]').children().clone();
+
+                $select.append($filtered);
+            }).change();
+        });
+    </script>
+{% endblock %}
