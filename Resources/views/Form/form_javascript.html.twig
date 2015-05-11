@@ -69,7 +69,7 @@
 
                 var $filtered = $options.filter('[label="' + $(this).val() + '"]').children().clone();
 
-                $select.append($filtered);
+                $select.append($filtered).change();
             }).change();
         });
     </script>
