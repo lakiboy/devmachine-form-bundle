@@ -23,11 +23,14 @@ class ChildChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setRequired(['group_by', 'parent']);
+        $resolver->setDefaults(['select2' => false]);
+        $resolver->setAllowedTypes('select2', 'boolean');
     }
 
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars['parent'] = $options['parent'];
+        $view->vars['select2'] = $options['select2'];
     }
 
     /**

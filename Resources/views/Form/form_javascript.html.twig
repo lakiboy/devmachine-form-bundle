@@ -47,16 +47,24 @@
         $(function () {
             var $options = $('#{{ id }} optgroup').clone(),
                 $parent  = $('#{{ form.parent.children[parent].vars.id }}'),
-                $select  = $('#{{ id }}')
+                $select  = $('#{{ id }}');
             ;
 
             $select.children('optgroup').remove();
 
+            {% if select2 %}
+                $select.select2();
+            {% endif %}
+
             $parent.change(function () {
-                {% if required %}
+                {% if required or multiple %}
                     $select.children().remove();
                 {% else %}
                     $select.children().slice(1).remove();
+                {% endif %}
+
+                {% if select2 %}
+                    $select.select2('val', '');
                 {% endif %}
 
                 var $filtered = $options.filter('[label="' + $(this).val() + '"]').children().clone();
