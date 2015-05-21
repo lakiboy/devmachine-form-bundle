@@ -73,8 +73,6 @@ class TypeaheadType extends AbstractType
 
             ->setAllowedTypes('source', 'array')
             ->setAllowedTypes('limit', 'integer')
-            ->setAllowedTypes('value_key', 'string')
-            ->setAllowedTypes('label_key', 'string')
             ->setAllowedTypes('matcher', 'string')
 
             ->setAllowedValues('matcher', ['contains', 'starts_with', 'ends_with'])

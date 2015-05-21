@@ -38,6 +38,10 @@
             <tag name="form.type" alias="devmachine_typeahead_country" />
         </service>
 
+        <service id="devmachine.form.type.typeahead_timezone" class="Devmachine\FormBundle\Form\Type\TypeaheadTimezoneType">
+            <tag name="form.type" alias="devmachine_typeahead_timezone" />
+        </service>
+
         <!-- Search -->
 
         <service id="devmachine.search.type.date_range" class="Devmachine\FormBundle\Form\Search\Type\DateRangeType">
