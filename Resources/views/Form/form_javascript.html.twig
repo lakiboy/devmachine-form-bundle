@@ -78,37 +78,48 @@
 {% block devmachine_typeahead_javascript %}
     <script type="text/javascript">
         $(function () {
-            var regexMatcher = function (source, property, regexFactory) {
-                return function findMatches(q, cb) {
-                    var matches = [], regex = regexFactory.call(null, q);
+            var key = {{ value_key | json_encode | raw }}, matcher;
 
-                    $.each(source, function (i, item) {
-                        if (regex.test(property ? item[property] : item)) {
-                            matches.push(item);
-                        }
-                    });
-
-                    cb(matches);
+            {% if route_name %}
+                matcher = function findMatches(q, cb, acb) {
+                    $.get('{{ path(route_name, route_params) }}', { query: q, matcher: '{{ matcher }}' }, function (result) {
+                        acb(result);
+                    }, 'json');
                 };
-            };
+            {% else %}
 
-            var startsWithMatcher = function (source, property) {
-                return regexMatcher(source, property, function (q) { return new RegExp('^' + q, 'i'); });
-            };
-            var endsWithMatcher = function (source, property) {
-                return regexMatcher(source, property, function (q) { return new RegExp(q + '$', 'i'); });
-            };
-            var containsMatcher = function (source, property) {
-                return regexMatcher(source, property, function (q) { return new RegExp(q, 'i'); });
-            };
+                var startsWithMatcher = function (source, property) {
+                    return regexMatcher(source, property, function (q) { return new RegExp('^' + q, 'i'); });
+                };
+                var endsWithMatcher = function (source, property) {
+                    return regexMatcher(source, property, function (q) { return new RegExp(q + '$', 'i'); });
+                };
+                var containsMatcher = function (source, property) {
+                    return regexMatcher(source, property, function (q) { return new RegExp(q, 'i'); });
+                };
 
-            var key = {{ value_key | json_encode | raw }};
+                var regexMatcher = function (source, property, regexFactory) {
+                    return function findMatches(q, cb) {
+                        var matches = [], regex = regexFactory.call(null, q);
+
+                        $.each(source, function (i, item) {
+                            if (regex.test(property ? item[property] : item)) {
+                                matches.push(item);
+                            }
+                        });
+
+                        cb(matches);
+                    };
+                };
+
+                matcher = {{ matcher }}Matcher.call({}, {{ source | json_encode | raw }}, {{ label_key | json_encode | raw }});
+            {% endif %}
 
             var dataSource = {
                 name: {{ name | json_encode | raw }},
                 limit: {{ limit | json_encode | raw }},
                 display: {{ label_key | json_encode | raw }},
-                source: {{ matcher }}.call({}, {{ source | json_encode | raw }}, {{ label_key | json_encode | raw }})
+                source: matcher
             };
 
             // Update original field.

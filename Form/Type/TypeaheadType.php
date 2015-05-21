@@ -33,6 +33,9 @@ class TypeaheadType extends AbstractType
             'label_key' => null,
             'matcher'   => 'contains',
 
+            'route_name'   => null,
+            'route_params' => [],
+
             'compound'    => false,
             'placeholder' => null,
         ]);
@@ -84,15 +87,15 @@ class TypeaheadType extends AbstractType
 
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['config'] = $options['config'];
-
-        // Data set.
-        $view->vars['name']      = $options['name'];
-        $view->vars['source']    = $options['source'];
-        $view->vars['limit']     = $options['limit'];
-        $view->vars['value_key'] = $options['value_key'];
-        $view->vars['label_key'] = $options['label_key'];
-        $view->vars['matcher']   = self::getMatcherFunction($options['matcher']);
+        $view->vars['config']       = $options['config'];
+        $view->vars['name']         = $options['name'];
+        $view->vars['source']       = $options['source'];
+        $view->vars['limit']        = $options['limit'];
+        $view->vars['value_key']    = $options['value_key'];
+        $view->vars['label_key']    = $options['label_key'];
+        $view->vars['matcher']      = self::getMatcherFunction($options['matcher']);
+        $view->vars['route_name']   = $options['route_name'];
+        $view->vars['route_params'] = $options['route_params'];
 
         $view->vars['typeahead_value'] = $view->vars['value'];
 
@@ -115,6 +118,6 @@ class TypeaheadType extends AbstractType
      */
     private static function getMatcherFunction($string)
     {
-        return lcfirst(str_replace(' ', '', ucwords(strtr($string, '_-', ' ')))).'Matcher';
+        return lcfirst(str_replace(' ', '', ucwords(strtr($string, '_-', ' '))));
     }
 }
