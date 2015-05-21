@@ -22,8 +22,11 @@ class TypeaheadCountryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $source = function (Options $options, $config) {
+            $k = $options['value_key'];
+            $v = $options['label_key'];
+
             foreach (Intl::getRegionBundle()->getCountryNames($options['locale']) as $key => $val) {
-                $config[] = [$options['key'] => $key, $options['property'] => $val];
+                $config[] = [$k => $key, $v => $val];
             }
 
             return $config;
@@ -34,8 +37,9 @@ class TypeaheadCountryType extends AbstractType
             'name'        => 'countries',
             'min_length'  => 1,
             'limit'       => 10,
-            'key'         => 'id',
-            'property'    => 'name',
+            'value_key'   => 'id',
+            'label_key'   => 'name',
+            'matcher'     => 'starts_with',
             'locale'      => \Locale::getDefault(),
         ]);
         $resolver->setNormalizer('source', $source);

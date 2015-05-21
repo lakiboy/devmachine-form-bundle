@@ -7,7 +7,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 
 class TypeaheadType extends AbstractType
 {
@@ -19,16 +18,21 @@ class TypeaheadType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+
+            // Configs.
             'hint'        => true,
             'highlight'   => true,
             'min_length'  => 3,
             'class_names' => [],
             'config'      => [],
-            'source'      => [],
-            'limit'       => 5,
-            'matcher'     => 'substring',
-            'property'    => null,
-            'key'         => null,
+
+            // Data set.
+            'source'    => [],
+            'limit'     => 5,
+            'value_key' => null,
+            'label_key' => null,
+            'matcher'   => 'contains',
+
             'compound'    => false,
             'placeholder' => null,
         ]);
@@ -56,9 +60,6 @@ class TypeaheadType extends AbstractType
 
             return $attr;
         };
-        $key = function (Options $options, $key) {
-            return $key ?: $options['name'];
-        };
 
         $resolver
             ->setRequired('name')
@@ -68,13 +69,18 @@ class TypeaheadType extends AbstractType
             ->setAllowedTypes('highlight', 'boolean')
             ->setAllowedTypes('min_length', 'integer')
             ->setAllowedTypes('class_names', 'array')
-            ->setAllowedTypes('source', 'array')
-            ->setAllowedTypes('limit', ['array', 'integer'])
             ->setAllowedTypes('config', 'array')
+
+            ->setAllowedTypes('source', 'array')
+            ->setAllowedTypes('limit', 'integer')
+            ->setAllowedTypes('value_key', 'string')
+            ->setAllowedTypes('label_key', 'string')
+            ->setAllowedTypes('matcher', 'string')
+
+            ->setAllowedValues('matcher', ['contains', 'starts_with', 'ends_with'])
 
             ->setNormalizer('config', $config)
             ->setNormalizer('attr', $attr)
-            ->setNormalizer('key', $key)
         ;
     }
 
@@ -83,27 +89,34 @@ class TypeaheadType extends AbstractType
         $view->vars['config'] = $options['config'];
 
         // Data set.
-        $view->vars['name']     = $options['name'];
-        $view->vars['source']   = $options['source'];
-        $view->vars['limit']    = $options['limit'];
-        $view->vars['matcher']  = $options['matcher'];
-        $view->vars['property'] = $options['property'];
-        $view->vars['key']      = $options['key'];
+        $view->vars['name']      = $options['name'];
+        $view->vars['source']    = $options['source'];
+        $view->vars['limit']     = $options['limit'];
+        $view->vars['value_key'] = $options['value_key'];
+        $view->vars['label_key'] = $options['label_key'];
+        $view->vars['matcher']   = self::getMatcherFunction($options['matcher']);
 
         $view->vars['typeahead_value'] = $view->vars['value'];
 
-        if ($view->vars['value'] && $options['key']) {
-            $property = PropertyAccess::createPropertyAccessor();
-
-            $key = '['.$options['key'].']';
-            $label = '['.$options['property'].']';
-
+        if ($view->vars['value'] && $options['value_key']) {
             foreach ($view->vars['source'] as $item) {
-                if ($view->vars['value'] === $property->getValue($item, $key)) {
-                    $view->vars['typeahead_value'] = $property->getValue($item, $label);
+                if ($view->vars['value'] === $item[$options['value_key']]) {
+                    $view->vars['typeahead_value'] = $item[$options['label_key']];
                     break;
                 }
             }
         }
+    }
+
+    /**
+     * starts_with -> startsWithMatcher
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    private static function getMatcherFunction($string)
+    {
+        return lcfirst(str_replace(' ', '', ucwords(strtr($string, '_-', ' ')))).'Matcher';
     }
 }

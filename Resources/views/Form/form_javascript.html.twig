@@ -78,12 +78,12 @@
 {% block devmachine_typeahead_javascript %}
     <script type="text/javascript">
         $(function () {
-            var substringMatcher = function (source, property) {
+            var regexMatcher = function (source, property, regexFactory) {
                 return function findMatches(q, cb) {
-                    var matches = [], substringRegex = new RegExp('^' + q, 'i');
+                    var matches = [], regex = regexFactory.call(null, q);
 
                     $.each(source, function (i, item) {
-                        if (substringRegex.test(property ? item[property] : item)) {
+                        if (regex.test(property ? item[property] : item)) {
                             matches.push(item);
                         }
                     });
@@ -92,13 +92,23 @@
                 };
             };
 
-            var key = {{ key | json_encode | raw }}, matcher = {{ matcher | raw }}Matcher;
+            var startsWithMatcher = function (source, property) {
+                return regexMatcher(source, property, function (q) { return new RegExp('^' + q, 'i'); });
+            };
+            var endsWithMatcher = function (source, property) {
+                return regexMatcher(source, property, function (q) { return new RegExp(q + '$', 'i'); });
+            };
+            var containsMatcher = function (source, property) {
+                return regexMatcher(source, property, function (q) { return new RegExp(q, 'i'); });
+            };
+
+            var key = {{ value_key | json_encode | raw }};
 
             var dataSource = {
                 name: {{ name | json_encode | raw }},
                 limit: {{ limit | json_encode | raw }},
-                display: {{ property | json_encode | raw }},
-                source: matcher.call({}, {{ source | json_encode | raw }}, {{ property | json_encode | raw }})
+                display: {{ label_key | json_encode | raw }},
+                source: {{ matcher }}.call({}, {{ source | json_encode | raw }}, {{ label_key | json_encode | raw }})
             };
 
             // Update original field.
