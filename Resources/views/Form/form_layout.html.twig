@@ -31,3 +31,15 @@
     {{ block('devmachine_date_widget') }}
 {% endspaceless %}
 {% endblock %}
+
+{% block devmachine_typeahead_widget %}
+{% spaceless %}
+    {{ block('hidden_widget') }}
+
+    {% set id = 'typeahead_' ~ id %}
+    {% set full_name = 'typeahead_' ~ full_name %}
+    {% set value = typeahead_value %}
+
+    {{ block('form_widget_simple') }}
+{% endspaceless %}
+{% endblock %}

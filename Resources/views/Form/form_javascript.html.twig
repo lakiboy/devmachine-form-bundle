@@ -74,3 +74,37 @@
         });
     </script>
 {% endblock %}
+
+{% block devmachine_typeahead_javascript %}
+    <script type="text/javascript">
+        $(function () {
+            var substringMatcher = function (source, property) {
+                return function findMatches(q, cb) {
+                    var matches = [], substringRegex = new RegExp('^' + q, 'i');
+
+                    $.each(source, function (i, item) {
+                        if (substringRegex.test(property ? item[property] : item)) {
+                            matches.push(item);
+                        }
+                    });
+
+                    cb(matches);
+                };
+            };
+
+            var key = {{ key | json_encode | raw }}, matcher = {{ matcher | raw }}Matcher;
+
+            var dataSource = {
+                name: {{ name | json_encode | raw }},
+                limit: {{ limit | json_encode | raw }},
+                display: {{ property | json_encode | raw }},
+                source: matcher.call({}, {{ source | json_encode | raw }}, {{ property | json_encode | raw }})
+            };
+
+            // Update original field.
+            $('#typeahead_{{ id }}').typeahead({{ config | json_encode | raw }}, dataSource).bind('typeahead:selected', function (e, item) {
+                $('#{{ id }}').val(key ? item[key] : item);
+            });
+        });
+    </script>
+{% endblock %}

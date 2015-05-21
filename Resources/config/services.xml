@@ -30,6 +30,14 @@
             <tag name="form.type" alias="devmachine_child_choice" />
         </service>
 
+        <service id="devmachine.form.type.typeahead" class="Devmachine\FormBundle\Form\Type\TypeaheadType">
+            <tag name="form.type" alias="devmachine_typeahead" />
+        </service>
+
+        <service id="devmachine.form.type.typeahead_country" class="Devmachine\FormBundle\Form\Type\TypeaheadCountryType">
+            <tag name="form.type" alias="devmachine_typeahead_country" />
+        </service>
+
         <!-- Search -->
 
         <service id="devmachine.search.type.date_range" class="Devmachine\FormBundle\Form\Search\Type\DateRangeType">
