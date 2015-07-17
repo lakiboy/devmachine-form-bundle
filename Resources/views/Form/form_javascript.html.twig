@@ -125,6 +125,8 @@
             // Update original field.
             $('#typeahead_{{ id }}').typeahead({{ config | json_encode | raw }}, dataSource).bind('typeahead:selected', function (e, item) {
                 $('#{{ id }}').val(key ? item[key] : item);
+            }).bind('typeahead:autocomplete', function (e, item) {
+                $('#{{ id }}').val(key ? item[key] : item);
             });
         });
     </script>
