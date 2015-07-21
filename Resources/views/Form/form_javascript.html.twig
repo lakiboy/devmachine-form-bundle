@@ -82,7 +82,12 @@
 
             {% if route_name %}
                 matcher = function findMatches(q, cb, acb) {
-                    $.get('{{ path(route_name, route_params) }}', { query: q, matcher: '{{ matcher }}' }, function (result) {
+                    var params = $('#{{ id }}').data('typeahead:query');
+
+                    params = params || {};
+                    params = $.extend(params, { query: q, matcher: '{{ matcher }}' });
+
+                    $.get('{{ path(route_name, route_params) }}', params, function (result) {
                         acb(result);
                     }, 'json');
                 };
