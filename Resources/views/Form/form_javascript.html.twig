@@ -78,16 +78,17 @@
 {% block devmachine_typeahead_javascript %}
     <script type="text/javascript">
         $(function () {
-            var key = {{ value_key | json_encode | raw }}, matcher;
+            var key = {{ value_key | json_encode | raw }}, $typeahead = $('#typeahead_{{ id }}'), matcher, params = {};
+
+            $('#{{ id }}').on('typeahead:query', function (event, args) {
+                params = args;
+                $typeahead.val('');
+            });
 
             {% if route_name %}
                 matcher = function findMatches(q, cb, acb) {
-                    var params = $('#{{ id }}').data('typeahead:query');
-
-                    params = params || {};
-                    params = $.extend(params, { query: q, matcher: '{{ matcher }}' });
-
-                    $.get('{{ path(route_name, route_params) }}', params, function (result) {
+                    var query = $.extend({}, params, { query: q, matcher: '{{ matcher }}' });
+                    $.get('{{ path(route_name, route_params) }}', query, function (result) {
                         acb(result);
                     }, 'json');
                 };
@@ -128,7 +129,7 @@
             };
 
             // Update original field.
-            $('#typeahead_{{ id }}').typeahead({{ config | json_encode | raw }}, dataSource).bind('typeahead:selected', function (e, item) {
+            $typeahead.typeahead({{ config | json_encode | raw }}, dataSource).bind('typeahead:selected', function (e, item) {
                 $('#{{ id }}').val(key ? item[key] : item);
             }).bind('typeahead:autocomplete', function (e, item) {
                 $('#{{ id }}').val(key ? item[key] : item);
