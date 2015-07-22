@@ -80,9 +80,11 @@
         $(function () {
             var key = {{ value_key | json_encode | raw }}, $typeahead = $('#typeahead_{{ id }}'), matcher, params = {};
 
-            $('#{{ id }}').on('typeahead:query', function (event, args) {
+            $('#{{ id }}').on('typeahead:query:update typeahead:query:setup', function (event, args) {
                 params = args;
-                $typeahead.val('');
+                if (event.type === 'typeahead:query:update') {
+                    $typeahead.val('');
+                }
             });
 
             {% if route_name %}
