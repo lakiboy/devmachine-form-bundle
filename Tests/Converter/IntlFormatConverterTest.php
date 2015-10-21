@@ -12,7 +12,7 @@ class IntlFormatConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_is_callable()
     {
-        $this->assertTrue(is_callable(new PassThroughFormatConverter('en', 'Europe/London')));
+        $this->assertTrue(is_callable(new PassThroughFormatConverter('en')));
     }
 
     /**
@@ -26,10 +26,10 @@ class IntlFormatConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_detects_proper_format($dateFormat, $timeFormat, $expected)
     {
-        $converter = new PassThroughFormatConverter('en', 'Europe/London');
+        $converter = new PassThroughFormatConverter('en');
 
-        $this->assertEquals($expected, $converter->convert($dateFormat, $timeFormat, $expected));
-        $this->assertEquals($expected, $converter($dateFormat, $timeFormat, $expected));
+        $this->assertEquals($expected, $converter->convert($dateFormat, $timeFormat));
+        $this->assertEquals($expected, $converter($dateFormat, $timeFormat));
     }
 
     public function getFormats()
