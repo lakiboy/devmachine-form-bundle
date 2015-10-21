@@ -9,6 +9,10 @@ class FormPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
+        if (!$container->hasParameter('twig.form.resources')) {
+            return;
+        }
+
         $resources = $container->getParameter('twig.form.resources');
 
         foreach (['layout', 'javascript'] as $template) {
