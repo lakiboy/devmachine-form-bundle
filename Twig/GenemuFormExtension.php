@@ -20,8 +20,8 @@ class GenemuFormExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'form_javascript' => new \Twig_Function_Method($this, 'renderJavascript', ['is_safe' => ['html']]),
-            'form_stylesheet' => new \Twig_Function_Node('Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode', ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('form_javascript', [$this, 'renderJavascript'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('form_stylesheet', [$this, 'renderStylesheet'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -30,6 +30,11 @@ class GenemuFormExtension extends \Twig_Extension
         $block = $prototype ? 'javascript_prototype' : 'javascript';
 
         return $this->renderer->searchAndRenderBlock($view, $block);
+    }
+
+    public function renderStylesheet(FormView $view)
+    {
+        return $this->renderer->searchAndRenderBlock($view, 'stylesheet');
     }
 
     public function getName()
