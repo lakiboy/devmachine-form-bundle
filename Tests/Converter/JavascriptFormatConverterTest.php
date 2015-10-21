@@ -3,6 +3,7 @@
 namespace Devmachine\FormBundle\Tests\Converter;
 
 use Devmachine\FormBundle\Converter\JavascriptFormatConverter;
+use IntlDateFormatter;
 
 class JavascriptFormatConverterTest extends \PHPUnit_Framework_TestCase
 {
@@ -35,6 +36,15 @@ class JavascriptFormatConverterTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertEquals($expected, $converter->convert($format));
+    }
+
+    /**
+     * @test
+     */
+    public function it_removes_escaping_from_literals()
+    {
+        $converter = new JavascriptFormatConverter('ru', 'Europe/Riga');
+        $this->assertEquals('d MMMM y г.', $converter->convert(IntlDateFormatter::LONG));
     }
 
     /**
