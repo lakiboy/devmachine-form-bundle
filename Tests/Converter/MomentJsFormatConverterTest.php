@@ -2,9 +2,9 @@
 
 namespace Devmachine\FormBundle\Tests\Converter;
 
-use Devmachine\FormBundle\Converter\BootstrapFormatConverter;
+use Devmachine\FormBundle\Converter\MomentJsFormatConverter;
 
-class BootstrapFormatConverterTest extends \PHPUnit_Framework_TestCase
+class MomentJsFormatConverterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
@@ -16,7 +16,7 @@ class BootstrapFormatConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_converts_format($intl, $expected)
     {
-        $converter = new BootstrapFormatConverter('en_GB', 'Europe/Riga');
+        $converter = new MomentJsFormatConverter('ru', 'Europe/Riga');
 
         $this->assertEquals($expected, $converter->convert($intl));
     }
@@ -27,9 +27,8 @@ class BootstrapFormatConverterTest extends \PHPUnit_Framework_TestCase
     public function getPatterns()
     {
         return [
-            ['yyyy-MM-dd', 'yyyy-mm-dd'],
-            ['d/MMM/y', 'd/M/yyyy'],
-            ['dd/MMMMM/yy', 'dd/M/yy'],
+            ['yyyy-MM-dd', 'YYYY-MM-DD'],
+            ['d/MMMM/y hha m ss Q D', 'D/MMMM/YYYY hha m ss Q DDD'],
         ];
     }
 }

@@ -7,12 +7,14 @@ use Devmachine\FormBundle\Converter\JavascriptFormatConverter;
 class JavascriptFormatConverterTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @test
+     *
      * @dataProvider getPatterns
      *
      * @param string $format
-     * @param string $converted
+     * @param string $expected
      */
-    public function testConvert($format, $converted)
+    public function it_converts_format($format, $expected)
     {
         $converter = new JavascriptFormatConverter('en_GB', 'Europe/London');
         $converter->setSymbolsMap([
@@ -28,9 +30,11 @@ class JavascriptFormatConverterTest extends \PHPUnit_Framework_TestCase
 
             'dd'   => '99',
             'd'    => '0',
+
+            'MMM'  => '!',
         ]);
 
-        $this->assertEquals($converted, $converter->convert($format));
+        $this->assertEquals($expected, $converter->convert($format));
     }
 
     /**

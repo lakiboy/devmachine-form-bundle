@@ -7,39 +7,39 @@ use IntlDateFormatter;
 
 class IntlFormatConverterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testConstructor()
+    /**
+     * @test
+     */
+    public function it_is_callable()
+    {
+        $this->assertTrue(is_callable(new PassThroughFormatConverter('en_GB', 'Europe/London')));
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider getFormats
+     *
+     * @param int|string $dateFormat
+     * @param int        $timeFormat
+     * @param string     $expected
+     */
+    public function it_detects_proper_format($dateFormat, $timeFormat, $expected)
     {
         $converter = new PassThroughFormatConverter('en_GB', 'Europe/London');
-        $this->assertTrue(is_callable($converter));
 
-        return $converter;
+        $this->assertEquals($expected, $converter->convert($dateFormat, $timeFormat, $expected));
+        $this->assertEquals($expected, $converter($dateFormat, $timeFormat, $expected));
     }
 
-    /**
-     * @depends testConstructor
-     */
-    public function testConvertByDateFormat(IntlFormatConverter $converter)
+    public function getFormats()
     {
-        $this->assertEquals('d MMM y', $converter->convert(IntlDateFormatter::MEDIUM));
-        $this->assertEquals('d MMM y', $converter(IntlDateFormatter::MEDIUM));
-    }
-
-    /**
-     * @depends testConstructor
-     */
-    public function testConvertByDateTimeFormat(IntlFormatConverter $converter)
-    {
-        $this->assertEquals('d MMM y, HH:mm:ss', $converter->convert(IntlDateFormatter::MEDIUM, IntlDateFormatter::MEDIUM));
-        $this->assertEquals('d MMM y, HH:mm:ss', $converter(IntlDateFormatter::MEDIUM, IntlDateFormatter::MEDIUM));
-    }
-
-    /**
-     * @depends testConstructor
-     */
-    public function testConvertByCustomFormat(IntlFormatConverter $converter)
-    {
-        $this->assertEquals('YYYY-mm-dd', $converter->convert('YYYY-mm-dd'));
-        $this->assertEquals('YYYY-mm-dd', $converter('YYYY-mm-dd'));
+        return [
+            [IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE, 'd MMM y'],
+            [IntlDateFormatter::MEDIUM, IntlDateFormatter::MEDIUM, 'd MMM y, HH:mm:ss'],
+            ['YYYY-mm-dd', IntlDateFormatter::NONE, 'YYYY-mm-dd'],
+            ['YYYY-mm-dd HH:mm', IntlDateFormatter::NONE, 'YYYY-mm-dd HH:mm'],
+        ];
     }
 }
 
