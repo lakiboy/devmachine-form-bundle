@@ -24,7 +24,7 @@
         "genemu/form-bundle": "*"
     },
     "autoload": {
-        "psr-4": { "Devmachine\\FormBundle\\": "" }
+        "psr-4": { "Devmachine\\Bundle\\FormBundle\\": "" }
     },
     "config": {
         "bin-dir": "bin"

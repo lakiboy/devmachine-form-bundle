@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\Twig;
+namespace Devmachine\Bundle\FormBundle\Twig;
 
 use Symfony\Component\Form\FormView;
 use Symfony\Bridge\Twig\Form\TwigRendererInterface;

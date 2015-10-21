@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle;
+namespace Devmachine\Bundle\FormBundle;
 
-use Devmachine\FormBundle\DependencyInjection\Compiler\FormPass;
+use Devmachine\Bundle\FormBundle\DependencyInjection\Compiler\FormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

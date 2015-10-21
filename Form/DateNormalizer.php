@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\Form;
+namespace Devmachine\Bundle\FormBundle\Form;
 
 use Symfony\Component\Form\FormInterface;
 

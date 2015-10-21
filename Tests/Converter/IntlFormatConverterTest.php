@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\Converter;
+namespace Devmachine\Bundle\FormBundle\Tests\Converter;
 
-use Devmachine\FormBundle\Converter\IntlFormatConverter;
+use Devmachine\Bundle\FormBundle\Converter\IntlFormatConverter;
 use IntlDateFormatter;
 
 class IntlFormatConverterTest extends \PHPUnit_Framework_TestCase

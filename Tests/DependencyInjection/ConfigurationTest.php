@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\DependencyInjection;
+namespace Devmachine\Bundle\FormBundle\Tests\DependencyInjection;
 
-use Devmachine\FormBundle\DependencyInjection\Configuration;
+use Devmachine\Bundle\FormBundle\DependencyInjection\Configuration;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase

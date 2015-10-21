@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests;
+namespace Devmachine\Bundle\FormBundle\Tests;
 
-use Devmachine\FormBundle\FormatConfiguration;
+use Devmachine\Bundle\FormBundle\FormatConfiguration;
 
 class FormatConfigurationTest extends \PHPUnit_Framework_TestCase
 {

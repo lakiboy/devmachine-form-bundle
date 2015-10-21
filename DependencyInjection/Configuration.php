@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\DependencyInjection;
+namespace Devmachine\Bundle\FormBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;

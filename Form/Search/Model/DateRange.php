@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\Form\Search\Model;
+namespace Devmachine\Bundle\FormBundle\Form\Search\Model;
 
 class DateRange
 {

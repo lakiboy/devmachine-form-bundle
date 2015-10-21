@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\Converter;
+namespace Devmachine\Bundle\FormBundle\Tests\Converter;
 
-use Devmachine\FormBundle\Converter\MomentJsFormatConverter;
+use Devmachine\Bundle\FormBundle\Converter\MomentJsFormatConverter;
 
 class MomentJsFormatConverterTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\DependencyInjection\Compiler;
+namespace Devmachine\Bundle\FormBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

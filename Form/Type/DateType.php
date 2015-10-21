@@ -1,10 +1,10 @@
 <?php
 
-namespace Devmachine\FormBundle\Form\Type;
+namespace Devmachine\Bundle\FormBundle\Form\Type;
 
-use Devmachine\FormBundle\Converter\BootstrapFormatConverter;
-use Devmachine\FormBundle\Form\DateNormalizer;
-use Devmachine\FormBundle\FormatConfiguration;
+use Devmachine\Bundle\FormBundle\Converter\BootstrapFormatConverter;
+use Devmachine\Bundle\FormBundle\Form\DateNormalizer;
+use Devmachine\Bundle\FormBundle\FormatConfiguration;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;

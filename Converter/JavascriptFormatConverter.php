@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\Converter;
+namespace Devmachine\Bundle\FormBundle\Converter;
 
 class JavascriptFormatConverter extends IntlFormatConverter
 {

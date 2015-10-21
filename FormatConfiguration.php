@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle;
+namespace Devmachine\Bundle\FormBundle;
 
 class FormatConfiguration
 {

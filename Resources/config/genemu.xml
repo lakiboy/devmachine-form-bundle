@@ -5,7 +5,7 @@
 
     <services>
 
-        <service id="devmachine_form.form.extension.genemu" class="Devmachine\FormBundle\Twig\GenemuFormExtension">
+        <service id="devmachine_form.form.extension.genemu" class="Devmachine\Bundle\FormBundle\Twig\GenemuFormExtension">
             <argument type="service" id="twig.form.renderer" />
             <tag name="form.extension" />
         </service>

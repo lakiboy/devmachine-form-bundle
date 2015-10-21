@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\Form\Search\Type;
+namespace Devmachine\Bundle\FormBundle\Form\Search\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,7 @@ class DateRangeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class'    => 'Devmachine\FormBundle\Form\Search\Model\DateRange',
+            'data_class'    => 'Devmachine\Bundle\FormBundle\Form\Search\Model\DateRange',
             'value_type'    => 'devmachine_date',
             'start_options' => [],
             'end_options'   => [],

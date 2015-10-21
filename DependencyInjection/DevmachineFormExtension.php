@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\DependencyInjection;
+namespace Devmachine\Bundle\FormBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

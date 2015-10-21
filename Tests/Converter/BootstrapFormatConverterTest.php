@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\Converter;
+namespace Devmachine\Bundle\FormBundle\Tests\Converter;
 
-use Devmachine\FormBundle\Converter\BootstrapFormatConverter;
+use Devmachine\Bundle\FormBundle\Converter\BootstrapFormatConverter;
 
 class BootstrapFormatConverterTest extends \PHPUnit_Framework_TestCase
 {

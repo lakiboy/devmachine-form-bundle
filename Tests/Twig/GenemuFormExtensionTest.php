@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\Twig;
+namespace Devmachine\Bundle\FormBundle\Tests\Twig;
 
-use Devmachine\FormBundle\Twig\GenemuFormExtension;
+use Devmachine\Bundle\FormBundle\Twig\GenemuFormExtension;
 use Symfony\Component\Form\FormView;
 
 class GenemuFormExtensionTest extends \PHPUnit_Framework_TestCase

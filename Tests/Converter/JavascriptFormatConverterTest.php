@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\Converter;
+namespace Devmachine\Bundle\FormBundle\Tests\Converter;
 
-use Devmachine\FormBundle\Converter\JavascriptFormatConverter;
+use Devmachine\Bundle\FormBundle\Converter\JavascriptFormatConverter;
 use IntlDateFormatter;
 
 class JavascriptFormatConverterTest extends \PHPUnit_Framework_TestCase

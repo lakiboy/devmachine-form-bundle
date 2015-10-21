@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\Form\Search\Type;
+namespace Devmachine\Bundle\FormBundle\Form\Search\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;

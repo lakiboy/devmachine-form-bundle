@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\Form;
+namespace Devmachine\Bundle\FormBundle\Tests\Form;
 
-use Devmachine\FormBundle\Form\DateNormalizer;
+use Devmachine\Bundle\FormBundle\Form\DateNormalizer;
 
 class DateNormalizerTest extends \PHPUnit_Framework_TestCase
 {

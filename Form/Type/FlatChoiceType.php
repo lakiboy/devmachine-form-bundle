@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Form\Type;
+namespace Devmachine\Bundle\FormBundle\Form\Type;
 
-use Devmachine\FormBundle\Form\DataTransformer\ArrayToStringTransformer;
+use Devmachine\Bundle\FormBundle\Form\DataTransformer\ArrayToStringTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

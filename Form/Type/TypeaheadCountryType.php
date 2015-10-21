@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\FormBundle\Form\Type;
+namespace Devmachine\Bundle\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Intl\Intl;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\DependencyInjection;
+namespace Devmachine\Bundle\FormBundle\Tests\DependencyInjection;
 
-use Devmachine\FormBundle\DependencyInjection\DevmachineFormExtension;
+use Devmachine\Bundle\FormBundle\DependencyInjection\DevmachineFormExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 
 class DevmachineFormExtensionTest extends AbstractExtensionTestCase
@@ -26,7 +26,7 @@ class DevmachineFormExtensionTest extends AbstractExtensionTestCase
             ],
         ]);
 
-        $this->assertContainerBuilderHasService('devmachine_form.format_configuration', 'Devmachine\FormBundle\FormatConfiguration');
+        $this->assertContainerBuilderHasService('devmachine_form.format_configuration', 'Devmachine\Bundle\FormBundle\FormatConfiguration');
         $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
             'devmachine_form.format_configuration',
             'setDateFormat',
@@ -40,7 +40,7 @@ class DevmachineFormExtensionTest extends AbstractExtensionTestCase
 
         $this->assertContainerBuilderHasService(
             'devmachine_form.form.extension.genemu',
-            'Devmachine\FormBundle\Twig\GenemuFormExtension'
+            'Devmachine\Bundle\FormBundle\Twig\GenemuFormExtension'
         );
         $this->assertContainerBuilderHasServiceDefinitionWithTag(
             'devmachine_form.form.extension.genemu',

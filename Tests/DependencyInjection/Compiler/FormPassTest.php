@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\FormBundle\Tests\DependencyInjection\Compiler;
+namespace Devmachine\Bundle\FormBundle\Tests\DependencyInjection\Compiler;
 
-use Devmachine\FormBundle\DependencyInjection\Compiler\FormPass;
+use Devmachine\Bundle\FormBundle\DependencyInjection\Compiler\FormPass;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractCompilerPassTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
