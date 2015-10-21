@@ -30,7 +30,7 @@ class DateTimeRangeType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        /** @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
+        /* @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
         $this->configureOptions($resolver);
     }
 }

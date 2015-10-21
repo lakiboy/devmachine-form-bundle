@@ -97,7 +97,7 @@ class DateType extends AbstractType
         $view->vars['inline'] = $options['inline'];
         $view->vars['config'] = $options['config'];
 
-        $config = & $view->vars['config'];
+        $config = &$view->vars['config'];
 
         if (!empty($config['startDate'])) {
             $config['startDate'] = $this->dateNormalizer->normalizeDate($config['startDate'], $form);
@@ -117,7 +117,7 @@ class DateType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        /** @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
+        /* @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
         $this->configureOptions($resolver);
     }
 }

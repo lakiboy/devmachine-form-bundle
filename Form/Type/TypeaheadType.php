@@ -110,7 +110,7 @@ class TypeaheadType extends AbstractType
     }
 
     /**
-     * starts_with -> startsWithMatcher
+     * starts_with -> startsWithMatcher.
      *
      * @param string $string
      *
