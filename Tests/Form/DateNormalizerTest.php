@@ -26,7 +26,7 @@ class DateNormalizerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_normalized_date()
+    public function it_normalizes_date()
     {
         $date              = new \DateTime();
         $datePreNormalized = new \DateTime();
