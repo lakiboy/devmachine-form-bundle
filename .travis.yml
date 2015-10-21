@@ -13,9 +13,5 @@ before_install:
 install:
     - composer install --prefer-dist --no-progress
 
-before_script:
-    - pecl install intl
-    - echo "extension=intl.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-
 after_script:
     - bin/coveralls
