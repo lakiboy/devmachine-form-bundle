@@ -14,13 +14,19 @@ class DateNormalizerTest extends \PHPUnit_Framework_TestCase
         $this->normalizer = new DateNormalizer();
     }
 
-    public function testNormalizeDateWithNonDateTime()
+    /**
+     * @test
+     */
+    public function it_leaves_non_datetime_type_intact()
     {
         $dummy = new \stdClass();
         $this->assertSame($dummy, $this->normalizer->normalizeDate($dummy, $this->getMock('Symfony\Component\Form\FormInterface')));
     }
 
-    public function testNormalizeDate()
+    /**
+     * @test
+     */
+    public function it_normalized_date()
     {
         $date              = new \DateTime();
         $datePreNormalized = new \DateTime();
