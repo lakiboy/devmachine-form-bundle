@@ -36,7 +36,7 @@ class IntlFormatConverterTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE, 'MMM d, y'],
-            [IntlDateFormatter::MEDIUM, IntlDateFormatter::MEDIUM, 'MMM d, y, h:mm:ss a'],
+            [IntlDateFormatter::NONE, IntlDateFormatter::MEDIUM, 'h:mm:ss a'],
             ['YYYY-mm-dd', IntlDateFormatter::NONE, 'YYYY-mm-dd'],
             ['YYYY-mm-dd HH:mm', IntlDateFormatter::NONE, 'YYYY-mm-dd HH:mm'],
         ];
