@@ -26,7 +26,7 @@
             <tag name="form.type" alias="devmachine_datetime" />
         </service>
 
-        <service id="devmachine_form.type.child_choice" class="Devmachine\FormBundle\Form\Type\ChildChoiceType">
+        <service id="devmachine.form.type.child_choice" class="Devmachine\FormBundle\Form\Type\ChildChoiceType">
             <tag name="form.type" alias="devmachine_child_choice" />
         </service>
 

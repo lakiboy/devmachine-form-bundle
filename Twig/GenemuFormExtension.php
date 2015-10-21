@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Bridge\Twig\Form\TwigRendererInterface;
 
 /**
- * Copied from https://github.com/genemu/GenemuFormBundle/blob/master/Twig/Extension/FormExtension.php
+ * Copied from https://github.com/genemu/GenemuFormBundle/blob/master/Twig/Extension/FormExtension.php.
  */
 class GenemuFormExtension extends \Twig_Extension
 {
@@ -19,10 +19,10 @@ class GenemuFormExtension extends \Twig_Extension
 
     public function getFunctions()
     {
-        return array(
+        return [
             'form_javascript' => new \Twig_Function_Method($this, 'renderJavascript', ['is_safe' => ['html']]),
             'form_stylesheet' => new \Twig_Function_Node('Symfony\Bridge\Twig\Node\SearchAndRenderBlockNode', ['is_safe' => ['html']]),
-        );
+        ];
     }
 
     public function renderJavascript(FormView $view, $prototype = false)
