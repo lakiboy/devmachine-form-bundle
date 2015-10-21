@@ -12,7 +12,7 @@ class IntlFormatConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_is_callable()
     {
-        $this->assertTrue(is_callable(new PassThroughFormatConverter('en_GB', 'Europe/London')));
+        $this->assertTrue(is_callable(new PassThroughFormatConverter('en', 'Europe/London')));
     }
 
     /**
@@ -26,7 +26,7 @@ class IntlFormatConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_detects_proper_format($dateFormat, $timeFormat, $expected)
     {
-        $converter = new PassThroughFormatConverter('en_GB', 'Europe/London');
+        $converter = new PassThroughFormatConverter('en', 'Europe/London');
 
         $this->assertEquals($expected, $converter->convert($dateFormat, $timeFormat, $expected));
         $this->assertEquals($expected, $converter($dateFormat, $timeFormat, $expected));
@@ -35,8 +35,8 @@ class IntlFormatConverterTest extends \PHPUnit_Framework_TestCase
     public function getFormats()
     {
         return [
-            [IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE, 'd MMM y'],
-            [IntlDateFormatter::MEDIUM, IntlDateFormatter::MEDIUM, 'd MMM y, HH:mm:ss'],
+            [IntlDateFormatter::MEDIUM, IntlDateFormatter::NONE, 'MMM d, y'],
+            [IntlDateFormatter::MEDIUM, IntlDateFormatter::MEDIUM, 'MMM d, y, h:mm:ss a'],
             ['YYYY-mm-dd', IntlDateFormatter::NONE, 'YYYY-mm-dd'],
             ['YYYY-mm-dd HH:mm', IntlDateFormatter::NONE, 'YYYY-mm-dd HH:mm'],
         ];
