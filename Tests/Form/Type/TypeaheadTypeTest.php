@@ -21,7 +21,7 @@ class TypeaheadTypeTest extends TypeTestCase
     /**
      * @test
      */
-    public function it_submits_with_simple_source()
+    public function it_submits_with_scalar_source_items()
     {
         $form = $this->factory->create(new TypeaheadType(), null, [
             'name'   => 'test',
@@ -112,7 +112,7 @@ class TypeaheadTypeTest extends TypeTestCase
     /**
      * @test
      */
-    public function it_supports_non_scalar_sources()
+    public function it_submits_with_non_scalar_source_items()
     {
         $form = $this->factory->create(new TypeaheadType(), null, [
             'name' => 'test',
