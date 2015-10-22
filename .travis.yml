@@ -7,10 +7,19 @@ php:
     - 7.0
     - hhvm
 
+env:
+    - SYMFONY_VERSION=2.3.*
+    - SYMFONY_VERSION=2.4.*
+    - SYMFONY_VERSION=2.5.*
+    - SYMFONY_VERSION=2.6.*
+    - SYMFONY_VERSION=2.7.*
+
 before_install:
     - composer self-update
 
 install:
+    - composer require symfony/framework-bundle:${SYMFONY_VERSION} --no-update
+    - composer require symfony/form:${SYMFONY_VERSION} --no-update
     - composer install --prefer-dist --no-progress
 
 after_script:
