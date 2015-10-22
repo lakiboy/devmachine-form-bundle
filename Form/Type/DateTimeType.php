@@ -9,7 +9,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class DateTimeType extends AbstractType
 {
@@ -112,15 +111,6 @@ class DateTimeType extends AbstractType
         $view->vars['input_addon'] = $options['input_addon'];
         $view->vars['inline'] = $options['inline'];
         $view->vars['config'] = $options['config'];
-    }
-
-    /**
-     * BC.
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        /* @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
-        $this->configureOptions($resolver);
     }
 
     private function normalizeDate($date)
