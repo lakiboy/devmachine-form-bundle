@@ -4,6 +4,7 @@ namespace Devmachine\Bundle\FormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TypeaheadTimezoneType extends AbstractType
 {
@@ -26,5 +27,13 @@ class TypeaheadTimezoneType extends AbstractType
             'limit'       => 10,
             'source'      => \DateTimeZone::listIdentifiers(),
         ]);
+    }
+
+    /**
+     * BC for Symfony <2.7.
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $this->configureOptions($resolver);
     }
 }

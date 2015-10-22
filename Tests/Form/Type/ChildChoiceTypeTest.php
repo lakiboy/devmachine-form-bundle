@@ -43,7 +43,7 @@ class ChildChoiceTypeTest extends TypeTestCase
 
         $view = $form->createView();
 
-        $this->assertEquals($view->vars['parent'], 'parent');
+        $this->assertEquals('parent', $view->vars['parent']);
         $this->assertTrue($view->vars['select2']);
     }
 }
