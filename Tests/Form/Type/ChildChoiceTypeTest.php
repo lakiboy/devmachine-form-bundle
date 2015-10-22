@@ -15,7 +15,7 @@ class ChildChoiceTypeTest extends TypeTestCase
      */
     public function it_requires_parent_option()
     {
-        $this->factory->create(new ChildChoiceType());
+        $this->factory->create(new ChildChoiceType(), null, ['group_by' => 'foo']);
     }
 
     /**

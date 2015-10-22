@@ -31,7 +31,7 @@ before_install:
 install:
     - composer require symfony/framework-bundle:${SYMFONY_VERSION} --no-update
     - composer require symfony/form:${SYMFONY_VERSION} --no-update
-    - composer install --prefer-dist --no-progress
+    - composer install --prefer-dist --prefer-stable --no-progress
 
 after_script:
     - bin/coveralls
