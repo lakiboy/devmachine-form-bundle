@@ -1,8 +1,8 @@
 {
     "name": "devmachine/form-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony form extensions.",
-    "keywords": [ "form" ],
+    "description": "Set of Symfony form types.",
+    "keywords": [ "form", "bootstrap", "typeahead" ],
     "homepage": "https://github.com/dev-machine/DevmachineFormBundle",
     "license": "MIT",
     "authors": [
