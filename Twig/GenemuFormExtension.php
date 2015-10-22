@@ -2,8 +2,8 @@
 
 namespace Devmachine\Bundle\FormBundle\Twig;
 
-use Symfony\Component\Form\FormView;
 use Symfony\Bridge\Twig\Form\TwigRendererInterface;
+use Symfony\Component\Form\FormView;
 
 /**
  * Copied from https://github.com/genemu/GenemuFormBundle/blob/master/Twig/Extension/FormExtension.php.

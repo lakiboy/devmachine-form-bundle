@@ -1,8 +1,8 @@
 <?php
 
-namespace Devmachine\Bundle\FormBundle\Tests\Form\Search\Type;
+namespace Devmachine\Bundle\FormBundle\Tests\Form\Type\Search;
 
-use Devmachine\Bundle\FormBundle\Form\Search\Type\DateRangeType;
+use Devmachine\Bundle\FormBundle\Form\Type\Search\DateRangeType;
 
 class DateRangeTypeTest extends AbstractTypeTestCase
 {

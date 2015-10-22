@@ -30,15 +30,17 @@ class DateTimeTypeTest extends TypeTestCase
             'config' => [
                 'stepping' => 5,
                 'keepOpen' => true,
+                'dayViewHeaderFormat' => 'dd/MM/y',
                 'extraFormats' => ['foo', 'bar'], // Removed
             ],
         ]);
 
         $this->assertEquals([
-            'locale'   => 'en_GB',
-            'format'   => 'YYYY-MM-DD HH:mm',
+            'locale' => 'en_GB',
+            'format' => 'YYYY-MM-DD HH:mm',
             'stepping' => 5,
             'keepOpen' => true,
+            'dayViewHeaderFormat' => 'DD/MM/YYYY',
         ], $form->getConfig()->getOption('config'));
     }
 
@@ -54,11 +56,7 @@ class DateTimeTypeTest extends TypeTestCase
             ->willReturn('y-MM-dd HH:mm')
         ;
 
-        $form = $this->factory->create(new DateTimeType($config), null, [
-            'config' => [
-                'dayViewHeaderFormat' => 'dd/MM/y',
-            ],
-        ]);
+        $form = $this->factory->create(new DateTimeType($config));
 
         $this->assertEquals('y-MM-dd HH:mm', $form->getConfig()->getOption('format'));
     }
@@ -84,6 +82,7 @@ class DateTimeTypeTest extends TypeTestCase
         $form = $this->factory->create($this->dateType, null, [
             'locale' => 'en_GB',
             'input_addon' => true,
+            'inline' => true,
             'config' => [
                 'showClear' => true,
             ],
@@ -92,11 +91,13 @@ class DateTimeTypeTest extends TypeTestCase
         $view = $form->createView();
 
         $this->assertTrue($view->vars['input_addon']);
-        $this->assertFalse($view->vars['inline']);
+        $this->assertTrue($view->vars['inline']);
         $this->assertEquals([
-            'locale'    => 'en_GB',
-            'format'    => 'YYYY-MM-DD HH:mm',
-            'showClear' => true,
+            'locale'     => 'en_GB',
+            'format'     => 'YYYY-MM-DD HH:mm',
+            'showClear'  => true,
+            'inline'     => true,
+            'sideBySide' => true,
         ], $view->vars['config']);
     }
 

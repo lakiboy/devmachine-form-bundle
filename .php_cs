@@ -8,6 +8,7 @@ $finder = Symfony\CS\Finder\DefaultFinder::create()
 return Symfony\CS\Config\Config::create()
     ->fixers([
         'short_array_syntax',
+        'ordered_use',
         '-unalign_equals',
         '-unalign_double_arrow'
     ])

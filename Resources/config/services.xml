@@ -44,11 +44,11 @@
 
         <!-- Search -->
 
-        <service id="devmachine.search.type.date_range" class="Devmachine\Bundle\FormBundle\Form\Search\Type\DateRangeType">
+        <service id="devmachine.form.type.search.date_range" class="Devmachine\Bundle\FormBundle\Form\Type\Search\DateRangeType">
             <tag name="form.type" alias="devmachine_search_range_date" />
         </service>
 
-        <service id="devmachine.search.type.datetime_range" class="Devmachine\Bundle\FormBundle\Form\Search\Type\DateTimeRangeType">
+        <service id="devmachine.form.type.search.datetime_range" class="Devmachine\Bundle\FormBundle\Form\Type\Search\DateTimeRangeType">
             <tag name="form.type" alias="devmachine_search_range_datetime" />
         </service>
 

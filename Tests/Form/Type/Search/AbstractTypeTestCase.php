@@ -1,6 +1,6 @@
 <?php
 
-namespace Devmachine\Bundle\FormBundle\Tests\Form\Search\Type;
+namespace Devmachine\Bundle\FormBundle\Tests\Form\Type\Search;
 
 use Devmachine\Bundle\FormBundle\Form\DateNormalizer;
 use Devmachine\Bundle\FormBundle\Form\Type\DateTimeType;
