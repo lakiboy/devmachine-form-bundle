@@ -30,6 +30,7 @@ class DateTimeTypeTest extends TypeTestCase
             'config' => [
                 'stepping' => 5,
                 'keepOpen' => true,
+                'extraFormats' => ['foo', 'bar'], // Removed
             ],
         ]);
 
@@ -121,8 +122,8 @@ class DateTimeTypeTest extends TypeTestCase
     {
         $form = $this->factory->create($this->dateType, null, [
             'config' => [
-                'minDate'       => '2014-09-21',
-                'maxDate'       => \DateTime::createFromFormat('Y-m-d', '2015-09-24'),
+                'startDate'     => '2014-09-21',
+                'endDate'       => \DateTime::createFromFormat('Y-m-d', '2015-09-24'),
                 'enabledDates'  => [
                     '1983-01-20',
                     \DateTime::createFromFormat('Y-m-d', '1989-04-05'),
