@@ -6,7 +6,6 @@ use Devmachine\Bundle\FormBundle\Form\DataTransformer\ArrayToStringTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class FlatChoiceType extends AbstractType
 {
@@ -28,17 +27,7 @@ class FlatChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'multiple' => true,
             'separator' => ', ',
         ]);
-    }
-
-    /**
-     * BC.
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        /* @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
-        $this->configureOptions($resolver);
     }
 }

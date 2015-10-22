@@ -6,7 +6,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ChildChoiceType extends AbstractType
 {
@@ -31,14 +30,5 @@ class ChildChoiceType extends AbstractType
     {
         $view->vars['parent'] = $options['parent'];
         $view->vars['select2'] = $options['select2'];
-    }
-
-    /**
-     * BC.
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        /* @var \Symfony\Component\OptionsResolver\OptionsResolver $resolver */
-        $this->configureOptions($resolver);
     }
 }
