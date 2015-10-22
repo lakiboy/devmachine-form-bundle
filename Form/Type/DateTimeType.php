@@ -41,7 +41,7 @@ class DateTimeType extends AbstractType
             }
 
             if (!empty($config['dayViewHeaderFormat'])) {
-                $config['dayViewHeaderFormat'] = call_user_func($options['formatter'], $options['dayViewHeaderFormat']);
+                $config['dayViewHeaderFormat'] = call_user_func($options['formatter'], $config['dayViewHeaderFormat']);
             }
 
             // Rename config keys.

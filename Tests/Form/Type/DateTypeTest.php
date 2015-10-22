@@ -92,7 +92,7 @@ class DateTypeTest extends TypeTestCase
     /**
      * @test
      */
-    public function it_uses_bootstrap_formatter()
+    public function it_uses_bootstrap_converter()
     {
         $form = $this->factory->create($this->dateType);
 
