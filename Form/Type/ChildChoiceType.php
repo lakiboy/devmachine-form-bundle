@@ -24,6 +24,7 @@ class ChildChoiceType extends AbstractType
         $resolver->setRequired(['group_by', 'parent']);
         $resolver->setDefaults(['select2' => false]);
         $resolver->setAllowedTypes('select2', 'boolean');
+        $resolver->setAllowedTypes('group_by', 'string');
     }
 
     public function buildView(FormView $view, FormInterface $form, array $options)
