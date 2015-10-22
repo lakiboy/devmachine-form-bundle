@@ -19,14 +19,14 @@ class TypeaheadType extends AbstractType
     {
         $resolver->setDefaults([
 
-            // Configs.
+            // https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#options
             'hint'        => true,
             'highlight'   => true,
             'min_length'  => 3,
-            'class_names' => [],
+            'class_names' => [], // https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#class-names
             'config'      => [],
 
-            // Data set.
+            // https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets
             'source'    => [],
             'limit'     => 5,
             'value_key' => null,
@@ -101,7 +101,7 @@ class TypeaheadType extends AbstractType
 
         if ($view->vars['value'] && $options['value_key']) {
             foreach ($view->vars['source'] as $item) {
-                if ($view->vars['value'] === $item[$options['value_key']]) {
+                if ($view->vars['value'] == $item[$options['value_key']]) {
                     $view->vars['typeahead_value'] = $item[$options['label_key']];
                     break;
                 }
