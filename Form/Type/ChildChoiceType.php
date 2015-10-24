@@ -25,7 +25,8 @@ class ChildChoiceType extends AbstractType
         $resolver->setRequired(['group_by', 'parent']);
         $resolver->setDefaults(['select2' => false, 'group_by' => null]); // Set "group_by" to null for BC.
         $resolver->setAllowedTypes('select2', 'boolean');
-        $resolver->setAllowedTypes('group_by', 'string');
+        $resolver->addAllowedTypes('group_by', ['string', 'null']);
+
     }
 
     public function buildView(FormView $view, FormInterface $form, array $options)
