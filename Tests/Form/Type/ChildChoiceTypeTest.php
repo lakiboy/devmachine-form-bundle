@@ -19,18 +19,6 @@ class ChildChoiceTypeTest extends TypeTestCase
     }
 
     /**
-     * Exception is InvalidOptionsException, because "choice" type sets "group_by" to "null" by default.
-     *
-     * @test
-     *
-     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
-     */
-    public function it_requires_group_by_option()
-    {
-        $this->factory->create(new ChildChoiceType(), null, ['parent' => 'foo']);
-    }
-
-    /**
      * @test
      */
     public function it_creates_valid_view()
