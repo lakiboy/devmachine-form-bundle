@@ -22,7 +22,7 @@ class TypeaheadTimezoneType extends AbstractType
     {
         $resolver->setDefaults([
             'placeholder' => 'Timezones',
-            'name'        => 'timezones',
+            'source_name' => 'timezones',
             'min_length'  => 1,
             'limit'       => 10,
             'source'      => \DateTimeZone::listIdentifiers(),

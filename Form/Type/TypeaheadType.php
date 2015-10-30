@@ -66,7 +66,7 @@ class TypeaheadType extends AbstractType
         };
 
         $resolver
-            ->setRequired('name')
+            ->setRequired('source_name')
             ->setRequired('source')
 
             ->setAllowedTypes('hint', 'boolean')
@@ -89,7 +89,7 @@ class TypeaheadType extends AbstractType
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars['config']       = $options['config'];
-        $view->vars['name']         = $options['name'];
+        $view->vars['source_name']  = $options['source_name'];
         $view->vars['source']       = $options['source'];
         $view->vars['limit']        = $options['limit'];
         $view->vars['value_key']    = $options['value_key'];

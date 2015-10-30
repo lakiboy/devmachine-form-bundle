@@ -35,7 +35,7 @@ class TypeaheadCountryType extends AbstractType
 
         $resolver->setDefaults([
             'placeholder' => 'Countries',
-            'name'        => 'countries',
+            'source_name' => 'countries',
             'min_length'  => 1,
             'limit'       => 10,
             'value_key'   => 'id',

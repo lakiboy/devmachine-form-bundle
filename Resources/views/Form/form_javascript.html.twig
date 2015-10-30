@@ -124,7 +124,7 @@
             {% endif %}
 
             var dataSource = {
-                name: {{ name | json_encode | raw }},
+                name: {{ source_name | json_encode | raw }},
                 limit: {{ limit | json_encode | raw }},
                 display: {{ label_key | json_encode | raw }},
                 source: matcher
