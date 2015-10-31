@@ -44,7 +44,7 @@ class DevmachineFormExtensionTest extends AbstractExtensionTestCase
         );
         $this->assertContainerBuilderHasServiceDefinitionWithTag(
             'devmachine_form.form.extension.genemu',
-            'form.extension'
+            'twig.extension'
         );
     }
 

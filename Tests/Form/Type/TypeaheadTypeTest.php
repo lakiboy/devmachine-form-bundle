@@ -11,7 +11,7 @@ class TypeaheadTypeTest extends TypeTestCase
      * @test
      *
      * @expectedException \Symfony\Component\OptionsResolver\Exception\MissingOptionsException
-     * @expectedExceptionMessage The required option "name" is missing.
+     * @expectedExceptionMessage The required option "source_name" is missing.
      */
     public function it_requires_name_option()
     {
@@ -24,8 +24,8 @@ class TypeaheadTypeTest extends TypeTestCase
     public function it_submits_with_scalar_source_items()
     {
         $form = $this->factory->create(new TypeaheadType(), null, [
-            'name'   => 'test',
-            'source' => ['Foo', 'Bar', 'Baz'],
+            'source_name' => 'test',
+            'source'      => ['Foo', 'Bar', 'Baz'],
         ]);
 
         $form->submit('Bar');
@@ -40,7 +40,7 @@ class TypeaheadTypeTest extends TypeTestCase
     public function it_normalizes_config()
     {
         $form = $this->factory->create(new TypeaheadType(), null, [
-            'name'        => 'test',
+            'source_name' => 'test',
             'min_length'  => 2,
             'highlight'   => false,
             'hint'        => true,
@@ -61,7 +61,7 @@ class TypeaheadTypeTest extends TypeTestCase
     public function it_normalizes_attrs()
     {
         $form = $this->factory->create(new TypeaheadType(), null, [
-            'name' => 'test',
+            'source_name' => 'test',
             'placeholder' => 'Select test',
         ]);
 
@@ -76,7 +76,7 @@ class TypeaheadTypeTest extends TypeTestCase
     public function it_creates_valid_view()
     {
         $form = $this->factory->create(new TypeaheadType(), null, [
-            'name'         => 'test',
+            'source_name'  => 'test',
             'source'       => ['Foo', 'Bar', 'Baz'],
             'route_name'   => 'test_view',
             'route_params' => ['id' => 'item'],
@@ -87,7 +87,7 @@ class TypeaheadTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
 
         $this->assertArrayHasKey('config', $view->vars);
-        $this->assertArrayHasKey('name', $view->vars);
+        $this->assertArrayHasKey('source_name', $view->vars);
         $this->assertArrayHasKey('source', $view->vars);
         $this->assertArrayHasKey('limit', $view->vars);
         $this->assertArrayHasKey('value_key', $view->vars);
@@ -98,7 +98,7 @@ class TypeaheadTypeTest extends TypeTestCase
         $this->assertArrayHasKey('typeahead_value', $view->vars);
 
         $this->assertEquals(['hint' => true, 'highlight' => true, 'minLength' => 3], $view->vars['config']);
-        $this->assertEquals('test', $view->vars['name']);
+        $this->assertEquals('test', $view->vars['source_name']);
         $this->assertEquals(['Foo', 'Bar', 'Baz'], $view->vars['source']);
         $this->assertEquals(5, $view->vars['limit']);
         $this->assertNull($view->vars['value_key']);
@@ -115,7 +115,7 @@ class TypeaheadTypeTest extends TypeTestCase
     public function it_submits_with_non_scalar_source_items()
     {
         $form = $this->factory->create(new TypeaheadType(), null, [
-            'name' => 'test',
+            'source_name' => 'test',
             'value_key' => 'id',
             'label_key' => 'city',
             'source' => [

@@ -22,7 +22,7 @@ class TypeaheadCountryTypeTest extends TypeTestCase
 
         $this->assertTrue($form->isSynchronized());
         $this->assertEquals('LV', $form->getViewData());
-        $this->assertEquals('countries', $view->vars['name']);
+        $this->assertEquals('countries', $view->vars['source_name']);
 
         $this->assertEquals('id', $view->vars['value_key']);
         $this->assertEquals('name', $view->vars['label_key']);

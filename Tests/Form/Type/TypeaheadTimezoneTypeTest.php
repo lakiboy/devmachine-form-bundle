@@ -20,7 +20,7 @@ class TypeaheadTimezoneTypeTest extends TypeTestCase
 
         $this->assertTrue($form->isSynchronized());
         $this->assertEquals('Europe/Riga', $form->getViewData());
-        $this->assertEquals('timezones', $view->vars['name']);
+        $this->assertEquals('timezones', $view->vars['source_name']);
     }
 
     protected function getExtensions()
