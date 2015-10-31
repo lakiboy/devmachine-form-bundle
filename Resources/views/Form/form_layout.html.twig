@@ -1,3 +1,11 @@
+{% block form_stylesheet %}
+{% spaceless %}
+    {% for child in form %}
+        {{ form_stylesheet(child) }}
+    {% endfor %}
+{% endspaceless %}
+{% endblock form_stylesheet %}
+
 {% block devmachine_date_widget %}
 {% spaceless %}
     {% if inline %}
