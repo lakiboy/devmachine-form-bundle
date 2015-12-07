@@ -33,14 +33,16 @@ This integration supports core _Typeahead_ functionality i.e. without _Bloodhoun
 
 ```php
 $builder->add('movie', 'devmachine_typeahead', [
+    'source_name' => 'movies', // Name of typeahead source.
+
     // https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#options
     'hint'        => true,     // If false, the typeahead will not show a hint.
-    'highlight'   => true,     // When suggestions are rendered, pattern matches for the current query in text.
-    'min_length'  => 3,        // The minimum character length needed before suggestions start getting rendered.
+    'highlight'   => true,     // Pattern matches for the current query in text.
+    'min_length'  => 3,        // The min length needed before suggestions start getting rendered.
     'class_names' => [],       // https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#class-names
     
     // https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets
-    'source'    => [],         // Data set: array of values or array of hashes. Can be left empty for Ajax typeaheads.
+    'source'    => [],         // Data set: array of values or array of hashes, empty for Ajax typeaheads.
     'limit'     => 5,          // Limit amount of results.
     'value_key' => null,       // Hash key of data source item to be used as suggestion value.
     'label_key' => null,       // Hash key of data source item to be used as suggestion label.
@@ -51,3 +53,6 @@ $builder->add('movie', 'devmachine_typeahead', [
 ])
 ```
 
+At the moment only single data source is suppored. 
+
+There are 2 predefined typeaheads: _devmachine_typeahead_timezone_ and _devmachine_typeahead_country_. Both form types are good examples for non-Ajax suggestions. 
