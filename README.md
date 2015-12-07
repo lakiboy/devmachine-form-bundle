@@ -49,13 +49,15 @@ To add _Javascript_ support to the form with _devmachine_ type(s) `form_javascri
     {{ form_end(form) }}
 {% endblock %}
 
-{# Put this block in parent layout somewhere at the bottom of page, #}
+{# Put this block in parent template somewhere at the bottom of page. #}
 {% block javascripts %}
     {{ form_javascript(form) }}
 {% endblock %}
 ```
 
-Same approach is used as in famous _GenemuFormBundle_. It is safe to use both _DevmachineFormBundle_ and _GenemuFormBundle_ in one project.
+Same approach is used as in famous _GenemuFormBundle_. 
+
+__Note__: it is safe to use both _DevmachineFormBundle_ and _GenemuFormBundle_ in one project.
 
 ## Documentation
 
