@@ -36,6 +36,11 @@ public function registerBundles()
 }
 ```
 
+## Documentation
 
+Topics:
 
-
+ - [Bootstrap date](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Resources/doc/date.md)
+ - [Bootstrap datetime](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Resources/doc/datetime.md)
+ - [Bootstrap typeahead](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Resources/doc/typeahead.md)
+ - [Choices](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Resources/doc/choices.md)
