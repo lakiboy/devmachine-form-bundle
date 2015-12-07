@@ -55,7 +55,7 @@ To add _Javascript_ support to the form with _devmachine_ type(s) `form_javascri
 {% endblock %}
 ```
 
-Same approach is used as in famous _GenemuFormBundle_. 
+The approach used is same as in famous _GenemuFormBundle_. 
 
 __Note__: it is safe to use both _DevmachineFormBundle_ and _GenemuFormBundle_ in one project.
 
