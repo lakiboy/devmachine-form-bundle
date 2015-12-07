@@ -6,7 +6,7 @@ For quick reference, please, check out this [demo](http://forms.devmachine.net/b
 
 ## Javascript
 
-This form type integrates Bootstrap datetime Javascript library. Read the documentation [here](http://eonasdan.github.io/bootstrap-datetimepicker/).
+This form type integrates _Bootstrap_ datetime _Javascript_ library. Read the documentation [here](http://eonasdan.github.io/bootstrap-datetimepicker/).
 
 ## Configuration
 
@@ -22,7 +22,7 @@ Read [more](http://userguide.icu-project.org/formatparse/datetime) about _ICU_ f
 
 ## Installation with Assetic
 
-You need to include relevant Javascript manually on the page. Find the _Assetic_ example below:
+You need to include relevant _Javascript_ manually on the page. Find the _Assetic_ example below:
 
 ```yaml
 assetic:
@@ -58,4 +58,4 @@ $builder->add('field', 'devmachine_datetime', [
 ]);
 ```
 
-See the full list of Javascript [config options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/).
+See the full list of _Javascript_ [config options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/).
