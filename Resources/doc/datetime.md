@@ -36,8 +36,26 @@ assetic:
                 - lib/jquery/jquery.js
                 - lib/bootstrap/js/bootstrap.js
                 - lib/moment/moment.js
-                - lib/moment/locale/ru.js
                 - lib/eonasdan-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js
 ```
 
 It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called. See the [demo](https://github.com/dev-machine/forms-demo) for reference.
+
+## Form options
+
+```php
+$builder->add('field', 'datetime', [
+    'format'      => 'dd-MM-yyyy HH:mm', // Configurable per project in config.
+    'input_addon' => false,              // Render input add-on (see the demo).
+    'inline'      => false,              // Render inline calendar (see the demo).
+    'locale'      => 'ru',               // Make sure to include relevant Javascript translation on the page.
+    'config'      => [                   // Bootstrap datetime config options (link below).
+        'calendarWeeks'   => true,
+        'showTodayButton' => true,
+        'showClear'       => true,
+        'showClose'       => true,
+    ],
+]);
+```
+
+See the full list of Javascript [config options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/).
