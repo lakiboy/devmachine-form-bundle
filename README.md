@@ -36,6 +36,27 @@ public function registerBundles()
 }
 ```
 
+## Integration
+
+To add _Javascript_ support to the form with _devmachine_ type(s) `form_javascript` twig block must be called.
+
+```twig
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{# Put this block in parent layout somewhere at the bottom of page, #}
+{% block javascripts %}
+    {{ form_javascript(form) }}
+{% endblock %}
+```
+
+Same approach is used as in famous _GenemuFormBundle_. It is safe to use both _DevmachineFormBundle_ and _GenemuFormBundle_ in one project.
+
 ## Documentation
 
 Topics:
