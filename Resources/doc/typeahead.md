@@ -6,11 +6,11 @@ For quick reference, please, check out this [demo](http://forms.devmachine.net/t
 
 ## Javascript
 
-This form type integrates Twitter typeahead Javascript library. Read the documentation [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md).
+This form type integrates _Twitter_ typeahead _Javascript_ library. Read the documentation [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md).
 
 ## Installation with Assetic
 
-You need to include relevant Javascript manually on the page. Find the _Assetic_ example below:
+You need to include relevant _Javascript_ manually on the page. Find the _Assetic_ example below:
 
 ```yaml
 assetic:
