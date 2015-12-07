@@ -26,27 +26,35 @@ You need to include relevant Javascript manually on the page. Find the _Assetic_
 
 ```yaml
 assetic:
-    ...
-    
     assets:
-        ...
-    
         forms_css:
-            ...
-        
             inputs:
                 - lib/bootstrap/css/bootstrap.css
                 - lib/bootstrap-datepicker/css/bootstrap-datepicker3.css
         forms_js:
-            ...
-        
             inputs:
                 - lib/jquery/jquery.js
                 - lib/bootstrap/js/bootstrap.js
                 - lib/bootstrap-datepicker/js/bootstrap-datepicker.js
 ```
 
-It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called. See the demo for reference.
+It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called. See the [demo](https://github.com/dev-machine/forms-demo) for reference.
 
+## Form options
 
+```php
+$builder->add('field', 'date', [
+    'format'      => 'dd-MM-yyyy', // Configurable per project in config.
+    'input_addon' => false,        // Render input add-on (see the demo).
+    'inline'      => false,        // Render inline calendar (see the demo).
+    'locale'      => 'ru',         // Make sure to include relevant Javascript translation on the page.
+    'config'      => [             // Bootstrap date config options (link below).
+        'clearBtn'       => true,
+        'orientation'    => 'top',
+        'todayHighlight' => true,
+    ],
+]);
+```
+
+See the full list of Javascript [config options](http://bootstrap-datepicker.readthedocs.org/en/latest/options.html).
 
