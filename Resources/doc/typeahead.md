@@ -1,4 +1,4 @@
-# Bootstrap typeahead
+# Twitter typeahead
 
 ## Demo
 
