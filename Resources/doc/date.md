@@ -43,7 +43,7 @@ It is not necessary to use _Assetic_ library. Just make sure relevant _Javascrip
 ## Form options
 
 ```php
-use use Devmachine\Bundle\FormBundle\Form\Type\DateType;
+use Devmachine\Bundle\FormBundle\Form\Type\DateType;
 
 $builder->add('field', DateType::class, [
     'format'      => 'dd-MM-yyyy', // Configurable per project in config.
