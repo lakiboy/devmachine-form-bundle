@@ -2,7 +2,7 @@
 
 ## Demo
 
-For quick reference, please, check out this [demo](http://forms.devmachine.net/bootstrap-datetime/).
+For quick reference, please, check out this [demo](http://forms-sf2.devmachine.net/bootstrap-datetime/).
 
 ## Javascript
 
@@ -39,7 +39,7 @@ assetic:
                 - lib/eonasdan-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js
 ```
 
-It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called. See the [demo](https://github.com/dev-machine/forms-demo) for reference.
+It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called. See the [demo](https://github.com/dev-machine/forms-demo/tree/1.0) for reference.
 
 ## Form options
 
