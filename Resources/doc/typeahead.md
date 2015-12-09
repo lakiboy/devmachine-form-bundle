@@ -2,7 +2,7 @@
 
 ## Demo
 
-For quick reference, please, check out this [demo](http://forms.devmachine.net/typeahead/).
+For quick reference, please, check out this [demo](http://forms-sf2.devmachine.net/typeahead/).
 
 ## Javascript
 
@@ -25,7 +25,7 @@ assetic:
                 - lib/typeahead.js/typeahead.bundle.js
 ```
 
-It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called. See the [demo](https://github.com/dev-machine/forms-demo) for reference.
+It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called. See the [demo](https://github.com/dev-machine/forms-demo/tree/1.0) for reference.
 
 ## Form options
 
@@ -57,4 +57,4 @@ At the moment only single data source is suppored.
 
 There are 2 predefined typeaheads: [devmachine_typeahead_timezone](https://github.com/dev-machine/DevmachineFormBundle/blob/1.0/Form/Type/TypeaheadTimezoneType.php) and [devmachine_typeahead_country](https://github.com/dev-machine/DevmachineFormBundle/blob/1.0/Form/Type/TypeaheadCountryType.php). Both form types are good examples for non-Ajax suggestions. 
 
-Check the [demo](http://forms.devmachine.net/typeahead/) for Ajax typeahead example.
+Check the [demo](http://forms-sf2.devmachine.net/typeahead/) for Ajax typeahead example.
