@@ -4,20 +4,24 @@ namespace Devmachine\Bundle\FormBundle\Tests\Form\Type;
 
 use Devmachine\Bundle\FormBundle\Form\Type\DateTimeType;
 use Devmachine\Bundle\FormBundle\FormatConfiguration;
+use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 class DateTimeTypeTest extends TypeTestCase
 {
-    private $dateType;
+    /**
+     * @var FormatConfiguration
+     */
+    private $config;
 
-    public function setUp()
+    protected function getExtensions()
     {
-        parent::setUp();
+        $this->config = new FormatConfiguration();
+        $this->config->setDateTimeFormat('y-MM-dd HH:mm');
 
-        $config = new FormatConfiguration();
-        $config->setDateTimeFormat('y-MM-dd HH:mm');
+        $dateType = new DateTimeType($this->config);
 
-        $this->dateType = new DateTimeType($config);
+        return [new PreloadedExtension([$dateType], [])];
     }
 
     /**
@@ -25,7 +29,7 @@ class DateTimeTypeTest extends TypeTestCase
      */
     public function it_normalizes_config()
     {
-        $form = $this->factory->create($this->dateType, null, [
+        $form = $this->factory->create(DateTimeType::class, null, [
             'locale' => 'en_GB',
             'config' => [
                 'stepping' => 5,
@@ -49,16 +53,11 @@ class DateTimeTypeTest extends TypeTestCase
      */
     public function it_uses_datetime_format_from_config()
     {
-        $config = $this->getMock('Devmachine\Bundle\FormBundle\FormatConfiguration');
-        $config
-            ->expects($this->once())
-            ->method('getDateTimeFormat')
-            ->willReturn('y-MM-dd HH:mm')
-        ;
+        $this->config->setDateTimeFormat('y/MM/dd HH:mm');
 
-        $form = $this->factory->create(new DateTimeType($config));
+        $form = $this->factory->create(DateTimeType::class);
 
-        $this->assertEquals('y-MM-dd HH:mm', $form->getConfig()->getOption('format'));
+        $this->assertEquals('y/MM/dd HH:mm', $form->getConfig()->getOption('format'));
     }
 
     /**
@@ -66,7 +65,7 @@ class DateTimeTypeTest extends TypeTestCase
      */
     public function it_uses_momentjs_converter()
     {
-        $form = $this->factory->create($this->dateType);
+        $form = $this->factory->create(DateTimeType::class);
 
         $formatter = $form->getConfig()->getOption('formatter');
 
@@ -79,7 +78,7 @@ class DateTimeTypeTest extends TypeTestCase
      */
     public function it_creates_valid_view()
     {
-        $form = $this->factory->create($this->dateType, null, [
+        $form = $this->factory->create(DateTimeType::class, null, [
             'locale' => 'en_GB',
             'input_addon' => true,
             'inline' => true,
@@ -106,7 +105,7 @@ class DateTimeTypeTest extends TypeTestCase
      */
     public function it_submits_form()
     {
-        $form = $this->factory->create($this->dateType);
+        $form = $this->factory->create(DateTimeType::class);
 
         $form->submit('1983-01-20 06:10');
 
@@ -121,7 +120,7 @@ class DateTimeTypeTest extends TypeTestCase
      */
     public function it_normalizes_date_options_in_config()
     {
-        $form = $this->factory->create($this->dateType, null, [
+        $form = $this->factory->create(DateTimeType::class, null, [
             'config' => [
                 'startDate'     => '2014-09-21',
                 'endDate'       => \DateTime::createFromFormat('Y-m-d', '2015-09-24'),

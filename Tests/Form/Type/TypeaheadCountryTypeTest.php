@@ -3,8 +3,6 @@
 namespace Devmachine\Bundle\FormBundle\Tests\Form\Type;
 
 use Devmachine\Bundle\FormBundle\Form\Type\TypeaheadCountryType;
-use Devmachine\Bundle\FormBundle\Form\Type\TypeaheadType;
-use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 class TypeaheadCountryTypeTest extends TypeTestCase
@@ -14,7 +12,7 @@ class TypeaheadCountryTypeTest extends TypeTestCase
      */
     public function it_submits_form()
     {
-        $form = $this->factory->create(new TypeaheadCountryType(), [
+        $form = $this->factory->create(TypeaheadCountryType::class, [
             'locale' => 'en',
         ]);
 
@@ -28,18 +26,5 @@ class TypeaheadCountryTypeTest extends TypeTestCase
         $this->assertEquals('name', $view->vars['label_key']);
         $this->assertEquals('LV', $view->vars['value']);
         $this->assertEquals('Latvia', $view->vars['typeahead_value']);
-    }
-
-    protected function getExtensions()
-    {
-        $typeahead = new TypeaheadType();
-
-        $types = [
-            $typeahead->getName() => $typeahead,
-        ];
-
-        return [
-            new PreloadedExtension($types, []),
-        ];
     }
 }

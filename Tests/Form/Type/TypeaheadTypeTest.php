@@ -15,7 +15,7 @@ class TypeaheadTypeTest extends TypeTestCase
      */
     public function it_requires_name_option()
     {
-        $this->factory->create(new TypeaheadType());
+        $this->factory->create(TypeaheadType::class);
     }
 
     /**
@@ -23,7 +23,7 @@ class TypeaheadTypeTest extends TypeTestCase
      */
     public function it_submits_with_scalar_source_items()
     {
-        $form = $this->factory->create(new TypeaheadType(), null, [
+        $form = $this->factory->create(TypeaheadType::class, null, [
             'source_name' => 'test',
             'source'      => ['Foo', 'Bar', 'Baz'],
         ]);
@@ -39,7 +39,7 @@ class TypeaheadTypeTest extends TypeTestCase
      */
     public function it_normalizes_config()
     {
-        $form = $this->factory->create(new TypeaheadType(), null, [
+        $form = $this->factory->create(TypeaheadType::class, null, [
             'source_name' => 'test',
             'min_length'  => 2,
             'highlight'   => false,
@@ -60,7 +60,7 @@ class TypeaheadTypeTest extends TypeTestCase
      */
     public function it_normalizes_attrs()
     {
-        $form = $this->factory->create(new TypeaheadType(), null, [
+        $form = $this->factory->create(TypeaheadType::class, null, [
             'source_name' => 'test',
             'placeholder' => 'Select test',
         ]);
@@ -75,7 +75,7 @@ class TypeaheadTypeTest extends TypeTestCase
      */
     public function it_creates_valid_view()
     {
-        $form = $this->factory->create(new TypeaheadType(), null, [
+        $form = $this->factory->create(TypeaheadType::class, null, [
             'source_name'  => 'test',
             'source'       => ['Foo', 'Bar', 'Baz'],
             'route_name'   => 'test_view',
@@ -114,7 +114,7 @@ class TypeaheadTypeTest extends TypeTestCase
      */
     public function it_submits_with_non_scalar_source_items()
     {
-        $form = $this->factory->create(new TypeaheadType(), null, [
+        $form = $this->factory->create(TypeaheadType::class, null, [
             'source_name' => 'test',
             'value_key' => 'id',
             'label_key' => 'city',

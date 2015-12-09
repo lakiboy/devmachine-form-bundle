@@ -15,7 +15,7 @@ class ChildChoiceTypeTest extends TypeTestCase
      */
     public function it_requires_parent_option()
     {
-        $this->factory->create(new ChildChoiceType(), null, ['group_by' => 'foo']);
+        $this->factory->create(ChildChoiceType::class, null, ['group_by' => 'foo']);
     }
 
     /**
@@ -23,7 +23,7 @@ class ChildChoiceTypeTest extends TypeTestCase
      */
     public function it_creates_valid_view()
     {
-        $form = $this->factory->create(new ChildChoiceType(), null, [
+        $form = $this->factory->create(ChildChoiceType::class, null, [
             'parent'   => 'parent',
             'group_by' => 'country',
             'select2'  => true,

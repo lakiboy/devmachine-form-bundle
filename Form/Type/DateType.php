@@ -6,11 +6,11 @@ use Devmachine\Bundle\FormBundle\Converter\BootstrapFormatConverter;
 use Devmachine\Bundle\FormBundle\Form\DateNormalizer;
 use Devmachine\Bundle\FormBundle\FormatConfiguration;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType as SymfonyDateType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class DateType extends AbstractType
 {
@@ -23,14 +23,14 @@ class DateType extends AbstractType
         $this->dateNormalizer = $dateNormalizer;
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'devmachine_date';
     }
 
     public function getParent()
     {
-        return 'date';
+        return SymfonyDateType::class;
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -110,13 +110,5 @@ class DateType extends AbstractType
                 $config['datesDisabled'][$index] = $this->dateNormalizer->normalizeDate($date, $form);
             }
         }
-    }
-
-    /**
-     * BC for Symfony <2.7.
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 }

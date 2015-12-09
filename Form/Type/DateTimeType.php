@@ -5,11 +5,11 @@ namespace Devmachine\Bundle\FormBundle\Form\Type;
 use Devmachine\Bundle\FormBundle\Converter\MomentJsFormatConverter;
 use Devmachine\Bundle\FormBundle\FormatConfiguration;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType as SymfonyDateTimeType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class DateTimeType extends AbstractType
 {
@@ -20,14 +20,14 @@ class DateTimeType extends AbstractType
         $this->configuration = $configuration;
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'devmachine_datetime';
     }
 
     public function getParent()
     {
-        return 'datetime';
+        return SymfonyDateTimeType::class;
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -112,14 +112,6 @@ class DateTimeType extends AbstractType
         $view->vars['input_addon'] = $options['input_addon'];
         $view->vars['inline'] = $options['inline'];
         $view->vars['config'] = $options['config'];
-    }
-
-    /**
-     * BC for Symfony <2.7.
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 
     private function normalizeDate($date)

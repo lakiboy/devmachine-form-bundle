@@ -18,7 +18,7 @@ class FlatChoiceTypeTest extends TypeTestCase
      */
     public function it_submits_with_valid_data($separator, $value, $data)
     {
-        $form = $this->factory->create(new FlatChoiceType(), null, ['separator' => $separator]);
+        $form = $this->factory->create(FlatChoiceType::class, null, ['separator' => $separator]);
 
         $form->submit($value);
 

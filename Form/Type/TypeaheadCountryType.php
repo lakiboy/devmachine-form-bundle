@@ -6,18 +6,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Intl\Intl;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TypeaheadCountryType extends AbstractType
 {
-    public function getName()
-    {
-        return 'devmachine_typeahead_country';
-    }
-
     public function getParent()
     {
-        return 'devmachine_typeahead';
+        return TypeaheadType::class;
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -44,13 +38,5 @@ class TypeaheadCountryType extends AbstractType
             'locale'      => \Locale::getDefault(),
         ]);
         $resolver->setNormalizer('source', $source);
-    }
-
-    /**
-     * BC for Symfony <2.7.
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 }

@@ -5,20 +5,24 @@ namespace Devmachine\Bundle\FormBundle\Tests\Form\Type;
 use Devmachine\Bundle\FormBundle\Form\DateNormalizer;
 use Devmachine\Bundle\FormBundle\Form\Type\DateType;
 use Devmachine\Bundle\FormBundle\FormatConfiguration;
+use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 class DateTypeTest extends TypeTestCase
 {
-    private $dateType;
+    /**
+     * @var FormatConfiguration
+     */
+    private $config;
 
-    public function setUp()
+    protected function getExtensions()
     {
-        parent::setUp();
+        $this->config = new FormatConfiguration();
+        $this->config->setDateFormat('y-MM-dd');
 
-        $config = new FormatConfiguration();
-        $config->setDateFormat('y-MM-dd');
+        $date = new DateType($this->config, new DateNormalizer());
 
-        $this->dateType = new DateType($config, new DateNormalizer());
+        return [new PreloadedExtension([$date], [])];
     }
 
     /**
@@ -26,7 +30,7 @@ class DateTypeTest extends TypeTestCase
      */
     public function it_normalizes_config()
     {
-        $form = $this->factory->create($this->dateType, null, [
+        $form = $this->factory->create(DateType::class, null, [
             'locale' => 'en_GB',
             'config' => [
                 'orientation' => 'right',
@@ -50,7 +54,7 @@ class DateTypeTest extends TypeTestCase
      */
     public function it_does_not_support_multidate_config_option()
     {
-        $this->factory->create($this->dateType, null, [
+        $this->factory->create(DateType::class, null, [
             'config' => [
                 'multidate' => true,
             ],
@@ -65,7 +69,7 @@ class DateTypeTest extends TypeTestCase
      */
     public function it_does_not_support_inputs_config_option()
     {
-        $this->factory->create($this->dateType, null, [
+        $this->factory->create(DateType::class, null, [
             'config' => [
                 'inputs' => ['#foo', '#bar'],
             ],
@@ -77,14 +81,9 @@ class DateTypeTest extends TypeTestCase
      */
     public function it_uses_date_format_from_config()
     {
-        $config = $this->getMock('Devmachine\Bundle\FormBundle\FormatConfiguration');
-        $config
-            ->expects($this->once())
-            ->method('getDateFormat')
-            ->willReturn('y-M-d')
-        ;
+        $this->config->setDateFormat('y-M-d');
 
-        $form = $this->factory->create(new DateType($config, new DateNormalizer()));
+        $form = $this->factory->create(DateType::class);
 
         $this->assertEquals('y-M-d', $form->getConfig()->getOption('format'));
     }
@@ -94,7 +93,7 @@ class DateTypeTest extends TypeTestCase
      */
     public function it_uses_bootstrap_converter()
     {
-        $form = $this->factory->create($this->dateType);
+        $form = $this->factory->create(DateType::class);
 
         $formatter = $form->getConfig()->getOption('formatter');
 
@@ -107,7 +106,7 @@ class DateTypeTest extends TypeTestCase
      */
     public function it_creates_valid_view()
     {
-        $form = $this->factory->create($this->dateType, null, [
+        $form = $this->factory->create(DateType::class, null, [
             'input_addon' => true,
             'config' => [
                 'autoclose' => true,
@@ -133,7 +132,7 @@ class DateTypeTest extends TypeTestCase
      */
     public function it_submits_form()
     {
-        $form = $this->factory->create($this->dateType);
+        $form = $this->factory->create(DateType::class);
 
         $form->submit('1983-01-20');
 
@@ -148,7 +147,7 @@ class DateTypeTest extends TypeTestCase
      */
     public function it_normalizes_date_options_in_config()
     {
-        $form = $this->factory->create($this->dateType, null, [
+        $form = $this->factory->create(DateType::class, null, [
             'config' => [
                 'startDate'     => '2014-09-21',
                 'endDate'       => \DateTime::createFromFormat('Y-m-d', '2015-09-24'),

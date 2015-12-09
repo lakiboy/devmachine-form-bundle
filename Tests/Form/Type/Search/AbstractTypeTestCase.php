@@ -64,13 +64,6 @@ abstract class AbstractTypeTestCase extends TypeTestCase
         $date = new DateType($this->config, new DateNormalizer());
         $datetime = new DateTimeType($this->config);
 
-        $types = [
-            $date->getName()     => $date,
-            $datetime->getName() => $datetime,
-        ];
-
-        return [
-            new PreloadedExtension($types, []),
-        ];
+        return [new PreloadedExtension([$date, $datetime], [])];
     }
 }

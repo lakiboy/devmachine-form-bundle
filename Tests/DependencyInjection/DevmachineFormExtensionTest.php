@@ -66,28 +66,20 @@ class DevmachineFormExtensionTest extends AbstractExtensionTestCase
      * @test
      *
      * @param string $serviceId
-     * @param string $alias
      */
-    public function it_registers_form_type($serviceId, $alias)
+    public function it_registers_form_type($serviceId)
     {
         $this->load();
 
         $this->assertContainerBuilderHasService($serviceId);
-        $this->assertContainerBuilderHasServiceDefinitionWithTag($serviceId, 'form.type', [
-            'alias' => $alias,
-        ]);
+        $this->assertContainerBuilderHasServiceDefinitionWithTag($serviceId, 'form.type');
     }
 
     public function getFormTypes()
     {
         return [
-            ['devmachine.form.type.flat_choice', 'devmachine_flat_choice'],
-            ['devmachine.form.type.date', 'devmachine_date'],
-            ['devmachine.form.type.datetime', 'devmachine_datetime'],
-            ['devmachine.form.type.child_choice', 'devmachine_child_choice'],
-            ['devmachine.form.type.typeahead', 'devmachine_typeahead'],
-            ['devmachine.form.type.typeahead_country', 'devmachine_typeahead_country'],
-            ['devmachine.form.type.typeahead_timezone', 'devmachine_typeahead_timezone'],
+            ['devmachine.form.type.date'],
+            ['devmachine.form.type.datetime'],
         ];
     }
 

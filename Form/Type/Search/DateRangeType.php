@@ -2,22 +2,17 @@
 
 namespace Devmachine\Bundle\FormBundle\Form\Type\Search;
 
+use Devmachine\Bundle\FormBundle\Form\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class DateRangeType extends AbstractType
 {
-    public function getName()
-    {
-        return 'devmachine_search_range_date';
-    }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'value_type'    => 'devmachine_date',
+            'value_type'    => DateType::class,
             'start_options' => [],
             'end_options'   => [],
         ]);
@@ -27,25 +22,17 @@ class DateRangeType extends AbstractType
     {
         $startOptions = array_merge([
             'required' => false,
-            'label' => 'range.label.start_date',
+            'label'    => 'range.label.start_date',
         ], $options['start_options']);
 
         $endOptions = array_merge([
             'required' => false,
-            'label' => 'range.label.end_date',
+            'label'    => 'range.label.end_date',
         ], $options['end_options']);
 
         $builder
             ->add('startDate', $options['value_type'], $startOptions)
             ->add('endDate', $options['value_type'], $endOptions)
         ;
-    }
-
-    /**
-     * BC for Symfony <2.7.
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 }

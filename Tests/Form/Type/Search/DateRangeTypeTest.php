@@ -29,6 +29,6 @@ class DateRangeTypeTest extends AbstractTypeTestCase
 
     protected function getFormType()
     {
-        return new DateRangeType();
+        return DateRangeType::class;
     }
 }

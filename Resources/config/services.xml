@@ -11,45 +11,15 @@
 
         <service id="devmachine.form.date_normalizer" class="Devmachine\Bundle\FormBundle\Form\DateNormalizer" public="false" />
 
-        <service id="devmachine.form.type.flat_choice" class="Devmachine\Bundle\FormBundle\Form\Type\FlatChoiceType">
-            <tag name="form.type" alias="devmachine_flat_choice" />
-        </service>
-
         <service id="devmachine.form.type.date" class="Devmachine\Bundle\FormBundle\Form\Type\DateType">
             <argument type="service" id="devmachine_form.format_configuration" />
             <argument type="service" id="devmachine.form.date_normalizer" />
-            <tag name="form.type" alias="devmachine_date" />
+            <tag name="form.type" />
         </service>
 
         <service id="devmachine.form.type.datetime" class="Devmachine\Bundle\FormBundle\Form\Type\DateTimeType">
             <argument type="service" id="devmachine_form.format_configuration" />
-            <tag name="form.type" alias="devmachine_datetime" />
-        </service>
-
-        <service id="devmachine.form.type.child_choice" class="Devmachine\Bundle\FormBundle\Form\Type\ChildChoiceType">
-            <tag name="form.type" alias="devmachine_child_choice" />
-        </service>
-
-        <service id="devmachine.form.type.typeahead" class="Devmachine\Bundle\FormBundle\Form\Type\TypeaheadType">
-            <tag name="form.type" alias="devmachine_typeahead" />
-        </service>
-
-        <service id="devmachine.form.type.typeahead_country" class="Devmachine\Bundle\FormBundle\Form\Type\TypeaheadCountryType">
-            <tag name="form.type" alias="devmachine_typeahead_country" />
-        </service>
-
-        <service id="devmachine.form.type.typeahead_timezone" class="Devmachine\Bundle\FormBundle\Form\Type\TypeaheadTimezoneType">
-            <tag name="form.type" alias="devmachine_typeahead_timezone" />
-        </service>
-
-        <!-- Search -->
-
-        <service id="devmachine.form.type.search.date_range" class="Devmachine\Bundle\FormBundle\Form\Type\Search\DateRangeType">
-            <tag name="form.type" alias="devmachine_search_range_date" />
-        </service>
-
-        <service id="devmachine.form.type.search.datetime_range" class="Devmachine\Bundle\FormBundle\Form\Type\Search\DateTimeRangeType">
-            <tag name="form.type" alias="devmachine_search_range_datetime" />
+            <tag name="form.type" />
         </service>
 
     </services>

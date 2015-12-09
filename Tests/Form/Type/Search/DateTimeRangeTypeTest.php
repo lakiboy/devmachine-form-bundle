@@ -2,9 +2,7 @@
 
 namespace Devmachine\Bundle\FormBundle\Tests\Form\Type\Search;
 
-use Devmachine\Bundle\FormBundle\Form\Type\Search\DateRangeType;
 use Devmachine\Bundle\FormBundle\Form\Type\Search\DateTimeRangeType;
-use Symfony\Component\Form\PreloadedExtension;
 
 class DateTimeRangeTypeTest extends AbstractTypeTestCase
 {
@@ -31,16 +29,6 @@ class DateTimeRangeTypeTest extends AbstractTypeTestCase
 
     protected function getFormType()
     {
-        return new DateTimeRangeType();
-    }
-
-    protected function getExtensions()
-    {
-        $parent = new DateRangeType();
-
-        $extensions   = parent::getExtensions();
-        $extensions[] = new PreloadedExtension([$parent->getName() => $parent], []);
-
-        return $extensions;
+        return DateTimeRangeType::class;
     }
 }
