@@ -10,22 +10,22 @@ __Supports Symfony 2.3+ and 3.0+ versions.__ Browse [documentation](https://gith
 
 ## Installation 
 
-Install this bundle using Composer. Add the following to your composer.json for Symfony 2.3+:
-
-```javascript
-{
-    "require": {
-        "devmachine/form-bundle": "~1.0"
-    }
-}
-```
-
-For Symfony 3.0+:
+Install this bundle using Composer. Add the following to your composer.json for Symfony 3.0+:
 
 ```javascript
 {
     "require": {
         "devmachine/form-bundle": "~2.0"
+    }
+}
+```
+
+For Symfony 2.3+:
+
+```javascript
+{
+    "require": {
+        "devmachine/form-bundle": "~1.0"
     }
 }
 ```
