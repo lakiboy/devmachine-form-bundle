@@ -43,7 +43,9 @@ It is not necessary to use _Assetic_ library. Just make sure relevant _Javascrip
 ## Form options
 
 ```php
-$builder->add('field', 'devmachine_date', [
+use use Devmachine\Bundle\FormBundle\Form\Type\DateType;
+
+$builder->add('field', DateType::class, [
     'format'      => 'dd-MM-yyyy', // Configurable per project in config.
     'input_addon' => false,        // Render input add-on (see the demo).
     'inline'      => false,        // Render inline calendar (see the demo).
