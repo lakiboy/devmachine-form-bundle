@@ -55,6 +55,6 @@ $builder->add('movie', 'devmachine_typeahead', [
 
 At the moment only single data source is suppored. 
 
-There are 2 predefined typeaheads: [devmachine_typeahead_timezone](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Form/Type/TypeaheadTimezoneType.php) and [devmachine_typeahead_country](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Form/Type/TypeaheadCountryType.php). Both form types are good examples for non-Ajax suggestions. 
+There are 2 predefined typeaheads: [devmachine_typeahead_timezone](https://github.com/dev-machine/DevmachineFormBundle/blob/1.0/Form/Type/TypeaheadTimezoneType.php) and [devmachine_typeahead_country](https://github.com/dev-machine/DevmachineFormBundle/blob/1.0/Form/Type/TypeaheadCountryType.php). Both form types are good examples for non-Ajax suggestions. 
 
 Check the [demo](http://forms.devmachine.net/typeahead/) for Ajax typeahead example.
