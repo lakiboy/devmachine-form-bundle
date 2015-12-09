@@ -63,7 +63,7 @@ __Note__: it is safe to use both _DevmachineFormBundle_ and _GenemuFormBundle_ i
 
 Topics:
 
- - [Bootstrap date](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Resources/doc/date.md)
- - [Bootstrap datetime](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Resources/doc/datetime.md)
- - [Twitter typeahead](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Resources/doc/typeahead.md)
- - [Choices](https://github.com/dev-machine/DevmachineFormBundle/blob/master/Resources/doc/choices.md)
+ - [Bootstrap date](https://github.com/dev-machine/DevmachineFormBundle/blob/1.0/Resources/doc/date.md)
+ - [Bootstrap datetime](https://github.com/dev-machine/DevmachineFormBundle/blob/1.0/Resources/doc/datetime.md)
+ - [Twitter typeahead](https://github.com/dev-machine/DevmachineFormBundle/blob/1.0/Resources/doc/typeahead.md)
+ - [Choices](https://github.com/dev-machine/DevmachineFormBundle/blob/1.0/Resources/doc/choices.md)
