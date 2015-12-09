@@ -6,7 +6,7 @@ Symfony form extensions for Bootstrap date/datetime widgets, typeahead based aut
 
 Visit [demo](http://forms.devmachine.net) website to view all available form types in action.
 
-_At the moment only Symfony 2.x is supported. Support for 3.x is coming._
+__This branch is for Symfony 2.x.__
 
 ## Installation 
 
