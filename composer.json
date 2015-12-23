@@ -9,7 +9,7 @@
         { "name": "Dmitri Lakachauskis", "email": "dmitri@devmachine.net" }
     ],
     "require": {
-        "php": "~5.4|~7.0",
+        "php": ">=5.4.0",
         "symfony/framework-bundle": "~2.3",
         "symfony/form": "~2.3"
     },
