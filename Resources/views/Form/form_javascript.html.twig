@@ -61,7 +61,10 @@
             $select.children('optgroup').remove();
 
             {% if select2 %}
-                $select.select2();
+                $select.select2({
+                    language: '{{ app.request.locale }}',
+                    theme: 'bootstrap'
+                });
             {% endif %}
 
             $parent.change(function () {

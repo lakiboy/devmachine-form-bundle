@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ChildChoiceType extends AbstractType
@@ -22,11 +23,18 @@ class ChildChoiceType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        $attr = function (Options $options) {
+            return $options['select2'] ? ['style' => 'width: 100%;'] : [];
+        };
+
         $resolver
             ->setRequired(['group_by', 'parent'])
-            ->setDefaults(['select2' => false])
             ->setAllowedTypes('select2', 'boolean')
             ->addAllowedTypes('group_by', ['string'])
+            ->setDefaults([
+                'select2' => false,
+                'attr' => $attr,
+            ])
         ;
     }
 
