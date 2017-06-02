@@ -29,12 +29,9 @@ class ChildChoiceType extends AbstractType
 
         $resolver
             ->setRequired(['group_by', 'parent'])
+            ->setDefaults(['select2' => false, 'attr' => $attr])
             ->setAllowedTypes('select2', 'boolean')
             ->addAllowedTypes('group_by', ['string'])
-            ->setDefaults([
-                'select2' => false,
-                'attr' => $attr,
-            ])
         ;
     }
 
