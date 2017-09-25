@@ -1,6 +1,6 @@
 # Devmachine form types demo
 
-Demo of [DevmachineFormBundle](https://github.com/dev-machine/DevmachineFormBundle) for Symfony 3.0.
+Demo of [DevmachineFormBundle](https://github.com/lakiboy/devmachine-form-bundle) for Symfony 3.0.
 
 ## Installation
 
