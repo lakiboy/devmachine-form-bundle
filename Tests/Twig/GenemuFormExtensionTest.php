@@ -12,7 +12,7 @@ class GenemuFormExtensionTest extends \PHPUnit_Framework_TestCase
      */
     public function it_registers_functions()
     {
-        $twig = new \Twig_Environment();
+        $twig = new \Twig_Environment(new \Twig_Loader_Array());
         $twig->addExtension(new GenemuFormExtension($this->getMock('Symfony\Bridge\Twig\Form\TwigRendererInterface')));
 
         $f1 = $twig->getFunction('form_javascript');
@@ -40,7 +40,7 @@ class GenemuFormExtensionTest extends \PHPUnit_Framework_TestCase
             )
         ;
 
-        $twig = new \Twig_Environment();
+        $twig = new \Twig_Environment(new \Twig_Loader_Array());
         $twig->addExtension(new GenemuFormExtension($renderer));
 
         call_user_func($twig->getFunction('form_javascript')->getCallable(), $view);
