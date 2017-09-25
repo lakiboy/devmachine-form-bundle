@@ -1,0 +1,9 @@
+{
+  "name": "devmachine-forms-admin",
+  "devDependencies": {
+    "gulp": "^3.9",
+    "gulp-rename": "^1.2",
+    "gulp-rimraf": "^0.2",
+    "main-bower-files": "^2.9"
+  }
+}

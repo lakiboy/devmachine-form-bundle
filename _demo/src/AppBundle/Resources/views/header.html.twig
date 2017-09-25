@@ -1,0 +1,12 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li{% if nav == 'date' %} class="active"{% endif %}><a href="{{ path('date') }}">Bootstrap date</a></li>
+                <li{% if nav == 'datetime' %} class="active"{% endif %}><a href="{{ path('datetime') }}">Bootstrap datetime</a></li>
+                <li{% if nav == 'typeahead' %} class="active"{% endif %}><a href="{{ path('typeahead') }}">Typeahead</a></li>
+                <li{% if nav == 'choice' %} class="active"{% endif %}><a href="{{ path('choice') }}">Choices</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

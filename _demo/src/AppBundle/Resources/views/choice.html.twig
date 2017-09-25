@@ -1,0 +1,40 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="page-header">
+        <h2>Flat choice</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {% include 'AppBundle::form.html.twig' with { form: flat } only %}
+
+            <p class="text-muted">Convert array model into string. Ideal for editing simple enums.</p>
+        </div>
+        <div class="col-md-6">
+            <pre><code class="language-php">{{ app_method_source('AppBundle:Choice:flatForm', 'form_definition') }}</code></pre>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h2>Dynamic child choice</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {% include 'AppBundle::form.html.twig' with { form: child } only %}
+
+            <p class="text-muted">
+                Easy way to build connected choices.<br>
+                When dealing with entities use <em>group_by</em> option for child choices.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <pre><code class="language-php">{{ app_method_source('AppBundle:Choice:childForm', 'form_definition') }}</code></pre>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ form_javascript(child) }}
+{% endblock %}

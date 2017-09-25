@@ -1,0 +1,19 @@
+date:
+    resource: "@AppBundle/Controller/DateController.php"
+    prefix:   /
+    type:     annotation
+
+datetime:
+    resource: "@AppBundle/Controller/DatetimeController.php"
+    prefix:   /bootstrap-datetime
+    type:     annotation
+
+typeahead:
+    resource: "@AppBundle/Controller/TypeaheadController.php"
+    prefix:   /typeahead
+    type:     annotation
+
+choice:
+    resource: "@AppBundle/Controller/ChoiceController.php"
+    prefix:   /choices
+    type:     annotation

@@ -1,0 +1,32 @@
+{
+  "name": "devmachine-forms-admin",
+  "license": "MIT",
+  "homepage": "http://floydtech.co.uk",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1",
+    "bootstrap": "~3.2",
+    "select2": "~3.5",
+    "select2-bootstrap-css": "~1.4",
+    "bootstrap-datepicker": "~1.4",
+    "eonasdan-bootstrap-datetimepicker": "~4.7",
+    "typeahead.js": "~0.11",
+    "typeahead.js-bootstrap3.less": "git@github.com:hyspace/typeahead.js-bootstrap3.less.git#master"
+  },
+  "overrides": {
+    "bootstrap-datepicker": {
+      "main": [
+        "dist/css/bootstrap-datepicker.css",
+        "dist/css/bootstrap-datepicker3.css",
+        "js/bootstrap-datepicker.js",
+        "js/locales/*"
+      ]
+    },
+    "moment": {
+      "main": [
+        "moment.js",
+        "locale/*"
+      ]
+    }
+  }
+}

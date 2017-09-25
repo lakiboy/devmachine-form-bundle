@@ -1,0 +1,53 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="page-header">
+        <h2>Default</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {% include 'AppBundle::form.html.twig' with { form: default } only %}
+
+            <p class="text-right">
+                <a href="http://eonasdan.github.io/bootstrap-datetimepicker/Options/" target="_blank">Configuration reference</a>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <pre><code class="language-php">{{ app_method_source('AppBundle:Datetime:defaultForm') }}</code></pre>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h2>With addon</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {% include 'AppBundle::form.html.twig' with { form: addon } only %}
+            <p class="text-muted">Click on the icon.</p>
+        </div>
+        <div class="col-md-6">
+            <pre><code class="language-php">{{ app_method_source('AppBundle:Datetime:addonForm') }}</code></pre>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h2>Inline</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {% include 'AppBundle::form.html.twig' with { form: inline } only %}
+        </div>
+        <div class="col-md-6">
+            <pre><code class="language-php">{{ app_method_source('AppBundle:Datetime:inlineForm') }}</code></pre>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ form_javascript(default) }}
+    {{ form_javascript(addon) }}
+    {{ form_javascript(inline) }}
+{% endblock %}
