@@ -1,9 +1,5 @@
 # Bootstrap date
 
-## Demo
-
-For quick reference, please, check out this [demo](http://forms.devmachine.net/).
-
 ## Javascript
 
 This form type integrates _Bootstrap_ date _Javascript_ library. Read the documentation [here](http://bootstrap-datepicker.readthedocs.org/).
@@ -17,7 +13,7 @@ devmachine_form:
     formats:
         date: dd/MM/y # default value: yyyy-MM-dd
 ```
-        
+
 Read [more](http://userguide.icu-project.org/formatparse/datetime) about _ICU_ formats.
 
 ## Installation with Assetic
@@ -38,7 +34,7 @@ assetic:
                 - lib/bootstrap-datepicker/js/bootstrap-datepicker.js
 ```
 
-It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called. See the [demo](https://github.com/dev-machine/forms-demo) for reference.
+It is not necessary to use _Assetic_ library. Just make sure relevant _Javascript_ is availbale before `form_javascript` twig block is called.
 
 ## Form options
 
@@ -59,4 +55,3 @@ $builder->add('field', DateType::class, [
 ```
 
 See the full list of _Javascript_ [config options](http://bootstrap-datepicker.readthedocs.org/en/latest/options.html).
-
