@@ -4,6 +4,10 @@
 
 Symfony form extensions for Bootstrap date/datetime widgets, typeahead based autocomplete and other helpers.
 
+## Update 2017
+
+In modern world of React, Angular and Vue there is no much point in solutions like this. Use your favourite front-end framework + Symfony API.
+
 ## Installation
 
 Install this bundle using Composer. Add the following to your composer.json for Symfony 3.0+:
