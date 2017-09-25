@@ -4,8 +4,6 @@
 
 Symfony form extensions for Bootstrap date/datetime widgets, typeahead based autocomplete and other helpers.
 
-Visit [demo](http://forms.devmachine.net) website to view all available form types in action.
-
 ## Installation
 
 Install this bundle using Composer. Add the following to your composer.json for Symfony 3.0+:
