@@ -6,7 +6,7 @@ Symfony form extensions for Bootstrap date/datetime widgets, typeahead based aut
 
 ## Update 2017
 
-In modern world of React, Angular and Vue there is no much point in solutions like this. Use your favourite front-end framework + Symfony API.
+In modern world of [React](https://facebook.github.io/react/), [Angular](https://angular.io/) and [Vue](https://vuejs.org/) there is no much point in solutions like this. Use your favourite front-end framework + Symfony API. However, you can still use this code if you want, see the [demo](https://github.com/lakiboy/devmachine-form-bundle/blob/master/_demo) for details.
 
 ## Installation
 
