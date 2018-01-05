@@ -20,7 +20,7 @@ class DateNormalizerTest extends \PHPUnit_Framework_TestCase
     public function it_leaves_non_datetime_type_intact()
     {
         $dummy = new \stdClass();
-        $this->assertSame($dummy, $this->normalizer->normalizeDate($dummy, $this->getMock('Symfony\Component\Form\FormInterface')));
+        $this->assertSame($dummy, $this->normalizer->normalizeDate($dummy, $this->makeMock('Symfony\Component\Form\FormInterface')));
     }
 
     /**
@@ -32,8 +32,8 @@ class DateNormalizerTest extends \PHPUnit_Framework_TestCase
         $datePreNormalized = new \DateTime();
         $dateNormalized    = new \DateTime();
 
-        $transformer1 = $this->getMock('Symfony\Component\Form\DataTransformerInterface');
-        $transformer2 = $this->getMock('Symfony\Component\Form\DataTransformerInterface');
+        $transformer1 = $this->makeMock('Symfony\Component\Form\DataTransformerInterface');
+        $transformer2 = $this->makeMock('Symfony\Component\Form\DataTransformerInterface');
 
         $transformer1
             ->expects($this->once())
@@ -59,14 +59,14 @@ class DateNormalizerTest extends \PHPUnit_Framework_TestCase
      */
     private function getForm(array $transformers)
     {
-        $config = $this->getMock('Symfony\Component\Form\FormConfigInterface');
+        $config = $this->makeMock('Symfony\Component\Form\FormConfigInterface');
         $config
             ->expects($this->once())
             ->method('getViewTransformers')
             ->willReturn($transformers)
         ;
 
-        $form = $this->getMock('Symfony\Component\Form\FormInterface');
+        $form = $this->makeMock('Symfony\Component\Form\FormInterface');
         $form
             ->expects($this->once())
             ->method('getConfig')
@@ -76,12 +76,12 @@ class DateNormalizerTest extends \PHPUnit_Framework_TestCase
         return $form;
     }
 
-    public function getMock($originalClassName)
+    private function makeMock($originalClassName)
     {
         if (method_exists($this, 'createMock')) {
             return $this->createMock($originalClassName);
         }
 
-        return parent::getMock($originalClassName);
+        return $this->getMock($originalClassName);
     }
 }
