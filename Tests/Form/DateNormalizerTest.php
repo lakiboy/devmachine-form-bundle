@@ -76,7 +76,7 @@ class DateNormalizerTest extends \PHPUnit_Framework_TestCase
         return $form;
     }
 
-    protected function getMock($originalClassName)
+    public function getMock($originalClassName)
     {
         if (method_exists($this, 'createMock')) {
             return $this->createMock($originalClassName);
