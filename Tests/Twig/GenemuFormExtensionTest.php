@@ -13,7 +13,7 @@ class GenemuFormExtensionTest extends \PHPUnit_Framework_TestCase
     public function it_registers_functions()
     {
         $twig = new \Twig_Environment(new \Twig_Loader_Array());
-        $twig->addExtension(new GenemuFormExtension($this->getMock('Symfony\Bridge\Twig\Form\TwigRendererInterface')));
+        $twig->addExtension(new GenemuFormExtension($this->getMock('Symfony\Component\Form\FormRendererInterface')));
 
         $f1 = $twig->getFunction('form_javascript');
         $f2 = $twig->getFunction('form_stylesheet');
@@ -29,7 +29,7 @@ class GenemuFormExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $view = new FormView();
 
-        $renderer = $this->getMock('Symfony\Bridge\Twig\Form\TwigRendererInterface');
+        $renderer = $this->getMock('Symfony\Component\Form\FormRendererInterface');
         $renderer
             ->expects($this->exactly(3))
             ->method('searchAndRenderBlock')
@@ -46,5 +46,14 @@ class GenemuFormExtensionTest extends \PHPUnit_Framework_TestCase
         call_user_func($twig->getFunction('form_javascript')->getCallable(), $view);
         call_user_func($twig->getFunction('form_javascript')->getCallable(), $view, true);
         call_user_func($twig->getFunction('form_stylesheet')->getCallable(), $view);
+    }
+
+    protected function getMock($originalClassName)
+    {
+        if (method_exists($this, 'createMock')) {
+            return $this->createMock($originalClassName);
+        }
+
+        return parent::getMock($originalClassName);
     }
 }
